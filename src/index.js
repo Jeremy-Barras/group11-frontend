@@ -10,8 +10,9 @@ import 'bootstrap';
 
 const HEADER_TITLE = "JavaScript & Node.js full course";
 const PAGE_TITLE = "Demo : use of webpack as a module bundler";
-const FOOTER_TEXT = "Happy learning : )";
+const FOOTER_SUPPORT_TEXT = "Support contact : jeremy.barras@student.vinci.be";
+const FOOTER_CREATE_BY_TEXT = "Create by : Group 11 of IPL Student";
 
 Router();
 
-setLayout(HEADER_TITLE, PAGE_TITLE, FOOTER_TEXT);
+setLayout(HEADER_TITLE, PAGE_TITLE, FOOTER_SUPPORT_TEXT, FOOTER_CREATE_BY_TEXT);
