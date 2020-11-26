@@ -29,3 +29,14 @@ input:valid {
   margin-right: auto;
 }
 
+#headerPicture {
+  width: auto;
+  height: auto;
+}
+
+#headerLogo {
+  max-width: 30%;
+  height: auto;
+}
+
+

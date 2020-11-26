@@ -7,11 +7,14 @@
  * @param {pageTitle} pageTitle
  * @param {footerText} footerText
  */
-function setLayout(headerTitle, pageTitle, footerSupportText, footerCreateByText) {
+function setLayout(headerTitle, headerPicture,pageTitle, footerSupportText, footerCreateByText) {
   document.querySelector("#headerTitle").innerText = headerTitle;
+  document.querySelector("#headerPicture").innerHTML = headerPicture; 
+
   document.querySelector("title").innerText = pageTitle;
   document.querySelector("#pageTitle").innerText = pageTitle;
-  document.querySelector("#footerSupportText").innerHTML = footerSupportText;
+  
+  document.querySelector("#footerSupportText").innerText = footerSupportText;
   document.querySelector("#footerCreateByText").innerText = footerCreateByText;
 }
 // named export
