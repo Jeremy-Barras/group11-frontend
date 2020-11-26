@@ -15,3 +15,15 @@ input:invalid {
 input:valid {
   border: 2px solid green;
 }
+
+#headerPicture {
+  width: auto;
+  height: auto;
+}
+
+#headerLogo {
+  max-width: 30%;
+  height: auto;
+}
+
+
