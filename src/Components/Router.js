@@ -1,9 +1,11 @@
 import HomePage from "./HomePage.js";
 import ErrorPage from "./ErrorPage.js";
+import GamePage from "./GamePage.js";
 
 const routes = {
   "/": HomePage,
   "/error": ErrorPage,
+  "/game": GamePage,
 };
 
 let page = document.querySelector("#page");
