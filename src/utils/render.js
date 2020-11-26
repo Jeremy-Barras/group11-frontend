@@ -11,7 +11,7 @@ function setLayout(headerTitle, pageTitle, footerSupportText, footerCreateByText
   document.querySelector("#headerTitle").innerText = headerTitle;
   document.querySelector("title").innerText = pageTitle;
   document.querySelector("#pageTitle").innerText = pageTitle;
-  document.querySelector("#footerSupportText").innerText = footerSupportText;
+  document.querySelector("#footerSupportText").innerHTML = footerSupportText;
   document.querySelector("#footerCreateByText").innerText = footerCreateByText;
 }
 // named export
