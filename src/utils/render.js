@@ -7,11 +7,12 @@
  * @param {pageTitle} pageTitle
  * @param {footerText} footerText
  */
-function setLayout(headerTitle, pageTitle, footerText) {
+function setLayout(headerTitle, pageTitle, footerSupportText, footerCreateByText) {
   document.querySelector("#headerTitle").innerText = headerTitle;
   document.querySelector("title").innerText = pageTitle;
   document.querySelector("#pageTitle").innerText = pageTitle;
-  document.querySelector("#footerText").innerText = footerText;
+  document.querySelector("#footerSupportText").innerHTML = footerSupportText;
+  document.querySelector("#footerCreateByText").innerText = footerCreateByText;
 }
 // named export
 export {setLayout};
