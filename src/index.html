@@ -25,31 +25,18 @@
     /> -->
     <!-- Own styelsheet to deal with the validation constraint styles : use Webpack instead (Asset Management, loading CSS ) -->
     <!-- <link rel="stylesheet" href="./stylesheets/style.css" /> -->
-  
+    <div class="container-fluid h-100 d-flex flex-column">
+      <!-- Header row : dark background, white text -->
+      <div class="row bg-dark py-2">
+        <div class="col">
+            <header id="header" class="text-center text-white font-weight-bold">
+            <div id="headerPicture"></div> 
+          </header>
+        </div>
+      </div>
+
   
     
-    <div class="bg-dark fixed-top">
-    <header class="row text-white ">
-      <div id="headerPicture" class="col-md-6 float-right"></div>
-      <div class="col-md-6">
-        <h4 id="headerTitle"></h4></div>
-      </div>  
-    </header>
-    </div>
-    
-
-  
-   <!----- <div class="d-none d-md-block col-md bg-dark"></div>
-    <div class="col col-md-10 mt-2">
-      <div id="navBar"></div>       
-      
-      <h4 id="pageTitle"></h4>
-
-      <div id="page"></div>
-    </div>
-    <div class="d-none d-md-block col-md bg-dark"></div>
-  </div> -->
-
   </head>
 
   <!-- Viewport height of 100% -->
@@ -58,16 +45,6 @@
     h-100 for a full height element  
     d-flex to create a flexbox container and transform direct children elements into flex items 
     flex-column to set a vertical direction-->
-    <div class="container-fluid h-100 d-flex flex-column">
-      <!-- Header row : dark background, white text -->
-      <div class="row bg-dark py-2">
-        <div class="col">
-          <header class="text-center text-white font-weight-bold">
-            <h4 id="headerTitle"></h4>
-          </header>
-        </div>
-      </div>
-
       <!-- Page content row. 
         flex-grow-1: Fill available space 
         mb-5 : to ensure that we see all of the content of the page row -->
