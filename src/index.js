@@ -10,7 +10,7 @@ import 'bootstrap';
 
 const HEADER_TITLE = "JavaScript & Node.js full course";
 const PAGE_TITLE = "Demo : use of webpack as a module bundler";
-const FOOTER_SUPPORT_TEXT = "<p>Support contact : <a href = "mailto:jeremy.barras@student.vinci.be">jeremy.barras@student.vinci.be</a></p>";
+const FOOTER_SUPPORT_TEXT = "<p>Support contact : <a href = " + "mailto:jeremy.barras@student.vinci.be" + ">jeremy.barras@student.vinci.be</a></p>";
 const FOOTER_CREATE_BY_TEXT = "Create by : Group 11 of IPL Student";
 
 Router();
