@@ -7,8 +7,9 @@
  * @param {pageTitle} pageTitle
  * @param {footerText} footerText
  */
-function setLayout(headerPicture,pageTitle, footerSupportText, footerCreateByText) {
+function setLayout(headerPicture, headerSound, pageTitle, footerSupportText, footerCreateByText) {
   document.querySelector("#headerPicture").innerHTML = headerPicture; 
+  document.querySelector("#headerSound").innerHTML = headerSound; 
 
   document.querySelector("title").innerText = pageTitle;
   document.querySelector("#pageTitle").innerText = pageTitle;
