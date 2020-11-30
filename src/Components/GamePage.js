@@ -11,8 +11,6 @@ const GamePage = () => {
     let zoneGame = document.getElementById("zoneGame");
     let divScore = document.getElementById("score");
     let divTimer = document.getElementById("timer");
-    let zoneWidth = zoneGame.offsetWidth;
-    let zoneHeight = zoneGame.offsetHeight;
     let cible;
     let timerCible;
     let minute = 1;
@@ -68,11 +66,16 @@ const GamePage = () => {
     function createCible(){
     cible = document.createElement("img");
     cible.src = cibleImage;
+    cible.setAttribute("onmousedown","return false");
     cible.setAttribute("class","cible anim");
     zoneGame.appendChild(cible);
     };
 
     function afficherCible(){
+    let zoneWidth = zoneGame.offsetWidth;
+    let zoneHeight = zoneGame.offsetHeight;
+    console.log("..ZoneWidth"+zoneWidth);
+    console.log("..ZoneHeight"+zoneHeight);
     clearTimeout(timerCible);
     let random = Math.floor(Math.random() * 10);
     console.log("..RANDOM"+random);
