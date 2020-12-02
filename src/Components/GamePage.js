@@ -22,8 +22,6 @@ const GamePage = () => {
 
     let Difficulty = localStorage.getItem("Difficulty");
     console.log("..Dificulty :" + Difficulty);
-
-
     let dureeAnim = 0;
     let dureeCible = 0;
     if(Difficulty == "Easy"){
@@ -73,6 +71,11 @@ const GamePage = () => {
         clearTimeout(timerCible);
         cible.src ="";
         divTimer.innerHTML = "FIN";
+        let bestScore = localStorage.getItem("BestScore");
+        if(score>bestScore){
+            localStorage.setItem("BestScore",score);
+        }
+        localStorage.setItem("Score",score);
     }else{
         timerGame = setTimeout(() => {  
         timer()
