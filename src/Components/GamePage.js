@@ -1,7 +1,8 @@
 import anime from 'animejs';
 import cibleImage from "../images/Cible.png";
 // destructuring assignment
-  let game = `<div id="score"></div>
+  let game = `<div id="BestScore"></div>
+  <div id="score"></div>
   <div id="timer"></div>
   <div id="zoneGame"></div>`;
 
@@ -10,6 +11,7 @@ const GamePage = () => {
     Game.innerHTML = game
     let zoneGame = document.getElementById("zoneGame");
     let divScore = document.getElementById("score");
+    let divBestScore = document.getElementById("BestScore");
     let divTimer = document.getElementById("timer");
     let cible;
     let timerCible;
@@ -17,6 +19,8 @@ const GamePage = () => {
     let seconde = 0;
     divTimer.innerHTML = minute + " : " + seconde+0;
     let score = 0;
+    let BestScore = localStorage.getItem("BestScore");
+    divBestScore.innerHTML = "BestScore : " + BestScore;
     divScore.innerHTML = "Score : " + score;
     let play = false;
 
