@@ -4,12 +4,12 @@ let home = `<div id="explication"></div>
 <form action="/game">
 <div class="form-group">
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Easy">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Easy" checked>
     <label class="form-check-label" for="inlineRadio1">Easy</label>
   </div>
   <div class="form-check form-check-inline">
     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Medium">
-    <label class="form-check-l abel" for="inlineRadio2">Medium</label>
+    <label class="form-check-label" for="inlineRadio2">Medium</label>
   </div>
   <div class="form-check form-check-inline">
     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Hard">

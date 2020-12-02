@@ -12,7 +12,6 @@ function setLayout(headerPicture, headerSound, pageTitle, footerSupportText, foo
   document.querySelector("#headerSound").innerHTML = headerSound; 
 
   document.querySelector("title").innerText = pageTitle;
-  document.querySelector("#pageTitle").innerText = pageTitle;
   
   document.querySelector("#footerSupportText").innerText = footerSupportText;
   document.querySelector("#footerCreateByText").innerText = footerCreateByText;

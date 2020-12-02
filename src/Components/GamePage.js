@@ -34,7 +34,7 @@ const GamePage = () => {
     divBestScore.innerHTML = "BestScore : " + BestScore;
     divScore.innerHTML = "Score : " + score;
     let play = false;
-
+    
     let Difficulty = localStorage.getItem("Difficulty");
     console.log("..Dificulty :" + Difficulty);
     let dureeAnim = 0;
