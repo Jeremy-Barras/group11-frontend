@@ -1,6 +1,5 @@
 <!-- The skeleton of this page was generated through the bootstrap Extension / "b4-$" Snippet -->
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,18 +25,6 @@
     /> -->
     <!-- Own styelsheet to deal with the validation constraint styles : use Webpack instead (Asset Management, loading CSS ) -->
     <!-- <link rel="stylesheet" href="./stylesheets/style.css" /> -->
-    <div class="container-fluid h-100 d-flex flex-column">
-      <!-- Header row : dark background, white text -->
-      <div class="row bg-dark py-2">
-        <div class="col">
-            <header id="header" class="text-center text-white font-weight-bold">
-            <div id="headerPicture"></div> 
-            <div id="headerSound"></div>
-          </header>
-        </div>
-      </div>
-
-  
     
   </head>
 
@@ -50,7 +37,19 @@
       <!-- Page content row. 
         flex-grow-1: Fill available space 
         mb-5 : to ensure that we see all of the content of the page row -->
-      <div class="row flex-grow-1 mb-5">
+      
+        <div class="container-fluid h-100 d-flex flex-column">
+          <!-- Header row : dark background, white text -->
+          <div class="row bg-dark py-2">
+            <div class="col">
+                <header id="header" class="text-white font-weight-bold">
+                <div id="headerPicture"></div> 
+                <div id="headerSound"></div>
+              </header>
+            </div>
+          </div>
+      
+        <div class="row flex-grow-1 mb-5">
         <div class="d-none d-md-block col-md bg-dark"></div>
         <div class="col col-md-10 mt-2">
           <h4 id="pageTitle"></h4>

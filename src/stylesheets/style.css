@@ -37,9 +37,20 @@ input:valid {
 }
 
 #headerSoundLogo {
-  width: 5%
+  width: 2.5%;
 }
 
+#headerPicture {
+  text-align: center;
+}
+
+#headerSound{
+  text-align: center;
+}
+
+#pageTitle {
+  text-align: center;
+}
 
 
 

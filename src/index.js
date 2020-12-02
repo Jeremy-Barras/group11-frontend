@@ -18,7 +18,6 @@ let imageSon = true;
 
 let divLogoSon = document.getElementById("headerSound"); 
 divLogoSon.addEventListener("click", () => {
-    console.log("Hello World"); 
     if(imageSon === true) {
         imageSon = false; 
         divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOff +">"; 
@@ -31,7 +30,7 @@ divLogoSon.addEventListener("click", () => {
 
 const HEADER_PICTURE = "<a href='/'><img id='headerLogo' src= " + logo +"  ></a>";
 const HEADER_SOUND = "<img id='headerSoundLogo' src="+ soundOn +">"; 
-const PAGE_TITLE = "Demo : use of webpack as a module bundler";
+const PAGE_TITLE = "Hello World !";
 const FOOTER_SUPPORT_TEXT = "Support contact : jeremy.barras@student.vinci.be";
 const FOOTER_CREATE_BY_TEXT = "Create by : Group 11 of IPL Student";
 
