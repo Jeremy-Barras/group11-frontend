@@ -4,15 +4,15 @@ let home = `<div id="explication"></div>
 <form action="/game">
 <div class="form-group">
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Easy">
     <label class="form-check-label" for="inlineRadio1">Easy</label>
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-    <label class="form-check-label" for="inlineRadio2">Medium</label>
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Medium">
+    <label class="form-check-l abel" for="inlineRadio2">Medium</label>
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Hard">
     <label class="form-check-label" for="inlineRadio3">Hard</label>
   </div>
 </div>
@@ -28,7 +28,14 @@ const HomePage = () => {
 
 const onLogin = (e) => {
   //e.preventDefault();
-  console.log("YO");
+  let Difficulty
+  let radios = document.getElementsByName("inlineRadioOptions");
+  for(let i = 0; i < radios.length; i++){
+    if(radios[i].checked){
+      Difficulty = radios[i].value;
+    }
+  }
+  localStorage.setItem("Difficulty",Difficulty);
 
 };
 

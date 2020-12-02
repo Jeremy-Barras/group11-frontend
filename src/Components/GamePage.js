@@ -20,6 +20,23 @@ const GamePage = () => {
     divScore.innerHTML = "Score : " + score;
     let play = false;
 
+    let Difficulty = localStorage.getItem("Difficulty");
+    console.log("..Dificulty :" + Difficulty);
+
+
+    let dureeAnim = 0;
+    let dureeCible = 0;
+    if(Difficulty == "Easy"){
+        dureeAnim = 2000;
+        dureeCible = 2000;
+    }else if(Difficulty == "Medium"){
+        dureeAnim = 1500;
+        dureeCible = 1000;
+    }else{
+        dureeAnim = 1000;
+        dureeCible = 500;
+    }
+
     let timerGame = setTimeout(() => {  
     timer()
     }, 1000);
@@ -31,7 +48,7 @@ const GamePage = () => {
     targets: ".anim", //anim,
     translateX: "250",
     //duration in ms to make one iteration
-    duration: 2000,
+    duration: dureeAnim,
     //number of iterations or true for indefinitely
     loop: true,
     //don't start automatically the animation
@@ -88,7 +105,7 @@ const GamePage = () => {
         play=false;
         cible.setAttribute("style","position:relative;left:"+Math.floor(Math.random() * (zoneWidth-cible.offsetWidth))+"px;top:"+Math.floor(Math.random() * (zoneHeight-cible.offsetHeight))+"px;");
     }
-    timerCible = setTimeout(() => {  afficherCible() }, 2000);
+    timerCible = setTimeout(() => {  afficherCible() }, dureeCible);
     };
 
     cible.addEventListener("click", () =>{
