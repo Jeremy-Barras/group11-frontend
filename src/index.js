@@ -34,8 +34,7 @@ const myPlayer = `<audio id="audioPlayer" controls autoplay>
         Votre navigateur ne supporte pas les fichiers audio.
      </audio>`;       
 
-const main = document.querySelector("main");
-main.innerHTML += myPlayer; 
+
      
 const HEADER_PICTURE = "<a href='/'><img id='headerLogo' src= " + logo +"  ></a>";
 const HEADER_SOUND = "<img id='headerSoundLogo' src="+ soundOn +">"; 
