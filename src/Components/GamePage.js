@@ -1,9 +1,18 @@
 import anime from 'animejs';
 import cibleImage from "../images/Cible.png";
 // destructuring assignment
-  let game = `<div id="BestScore"></div>
-  <div id="score"></div>
-  <div id="timer"></div>
+  let game = `
+  <div id="GameFunction">
+    <div class="score">
+        <div id="BestScore"></div>
+        <div id="score"></div>
+    </div>
+    <div id="timer"></div>
+    <div class="button">
+        <button type="button" id="Replay" class="btn btn-primary">Replay</button>
+        <button type="button" id="Stop" class="btn btn-danger">Stop</button>
+    </div>
+  </div>
   <div id="zoneGame"></div>`;
 
 const GamePage = () => {
@@ -13,6 +22,8 @@ const GamePage = () => {
     let divScore = document.getElementById("score");
     let divBestScore = document.getElementById("BestScore");
     let divTimer = document.getElementById("timer");
+    let buttonReplay = document.getElementById("Replay");
+    let buttonStop = document.getElementById("Stop");
     let cible;
     let timerCible;
     let minute = 1;
@@ -23,7 +34,7 @@ const GamePage = () => {
     divBestScore.innerHTML = "BestScore : " + BestScore;
     divScore.innerHTML = "Score : " + score;
     let play = false;
-
+    
     let Difficulty = localStorage.getItem("Difficulty");
     console.log("..Dificulty :" + Difficulty);
     let dureeAnim = 0;
@@ -116,14 +127,27 @@ const GamePage = () => {
     };
 
     cible.addEventListener("click", () =>{
-    clearTimeout(timerCible);
-    if(play){
-        score +=15;
-    }else{
-        score +=10;
-    }
-    divScore.innerHTML = "Score : " + score;
-    afficherCible();
+        clearTimeout(timerCible);
+        if(play){
+            score +=15;
+        }else{
+            score +=10;
+        }
+        divScore.innerHTML = "Score : " + score;
+        afficherCible();
+    });
+
+    buttonReplay.addEventListener("click", () =>{
+        console.log("..REPLAY")
+        document.location.reload();
+    });
+
+    buttonStop.addEventListener("click", () =>{
+        console.log("..STOP")
+        clearTimeout(timerGame);
+        clearTimeout(timerCible);
+        cible.src ="";
+        divTimer.innerHTML = "FIN";
     });
 };
 
