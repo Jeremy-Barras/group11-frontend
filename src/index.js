@@ -3,6 +3,7 @@ import {Router} from "./Components/Router.js";
 import logo from "./images/logojs.png"; 
 import soundOn from "./images/soundOn.png";
 import soundOff from "./images/soundOff.png";
+import music from "./musique/musique.mp3";
 
 /* use webpack style & css loader*/
 import "./stylesheets/style.css";
@@ -25,6 +26,17 @@ divLogoSon.addEventListener("click", () => {
     console.log(imageSon)
 });
 
+const myPlayer = `<audio id="audioPlayer" controls autoplay>
+        <source 
+            src="${music}"
+            type="audio/mpeg"
+        />
+        Votre navigateur ne supporte pas les fichiers audio.
+     </audio>`;       
+
+const main = document.querySelector("main");
+main.innerHTML += myPlayer; 
+     
 const HEADER_PICTURE = "<a href='/'><img id='headerLogo' src= " + logo +"  ></a>";
 const HEADER_SOUND = "<img id='headerSoundLogo' src="+ soundOn +">"; 
 const PAGE_TITLE = "AIM-LAB";
