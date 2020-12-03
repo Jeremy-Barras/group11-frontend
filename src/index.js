@@ -1,11 +1,8 @@
 import { setLayout } from "./utils/render.js";
-import HomePage from "./Components/HomePage.js";
 import {Router} from "./Components/Router.js";
 import logo from "./images/logojs.png"; 
 import soundOn from "./images/soundOn.png";
 import soundOff from "./images/soundOff.png";
-
-
 
 /* use webpack style & css loader*/
 import "./stylesheets/style.css";

@@ -1,3 +1,4 @@
+import { RedirectUrl } from "./Router.js";
 let home = `<div id="explication"></div>
 <div id="video"></div>
 <div id="bestScore"></div>
@@ -22,12 +23,12 @@ let home = `<div id="explication"></div>
 const HomePage = () => {  
   let page = document.querySelector("#page");
   page.innerHTML = home;  
-  let loginForm = document.querySelector("form");
-  loginForm.addEventListener("submit", onLogin);
+  let gameForm = document.querySelector("form");
+  gameForm.addEventListener("submit", onGame);
 };
 
-const onLogin = (e) => {
-  //e.preventDefault();
+const onGame = (e) => {
+  e.preventDefault();
   let Difficulty
   let radios = document.getElementsByName("inlineRadioOptions");
   for(let i = 0; i < radios.length; i++){
@@ -36,7 +37,7 @@ const onLogin = (e) => {
     }
   }
   localStorage.setItem("Difficulty",Difficulty);
-
+  RedirectUrl("/game");
 };
 
 

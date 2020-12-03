@@ -16,6 +16,7 @@ import cibleImage from "../images/Cible.png";
   <div id="zoneGame"></div>`;
 
 const GamePage = () => {
+    let Difficulty = localStorage.getItem("Difficulty");
     let Game = document.querySelector("#page");
     Game.innerHTML = game
     let zoneGame = document.getElementById("zoneGame");
@@ -30,12 +31,24 @@ const GamePage = () => {
     let seconde = 0;
     divTimer.innerHTML = minute + " : " + seconde+0;
     let score = 0;
-    let BestScore = localStorage.getItem("BestScore");
+    let BestScore = 0;
+    if(Difficulty === "Easy"){
+        if(localStorage.getItem("BestScoreEasy") != null){
+            BestScore = localStorage.getItem("BestScoreEasy");
+        }
+    } else if(Difficulty === "Medium") {
+        if(localStorage.getItem("BestScoreMedium") != null){
+            BestScore = localStorage.getItem("BestScoreMedium");
+        }
+    } else {
+        if(localStorage.getItem("BestScoreHard") != null){
+            BestScore = localStorage.getItem("BestScoreHard");
+        }
+    }
     divBestScore.innerHTML = "BestScore : " + BestScore;
     divScore.innerHTML = "Score : " + score;
     let play = false;
     
-    let Difficulty = localStorage.getItem("Difficulty");
     console.log("..Dificulty :" + Difficulty);
     let dureeAnim = 0;
     let dureeCible = 0;
@@ -86,9 +99,18 @@ const GamePage = () => {
         clearTimeout(timerCible);
         cible.src ="";
         divTimer.innerHTML = "FIN";
-        let bestScore = localStorage.getItem("BestScore");
-        if(score>bestScore){
-            localStorage.setItem("BestScore",score);
+        if(Difficulty === "Easy"){
+            if(score>BestScore){
+                localStorage.setItem("BestScoreEasy",score);
+            }
+        } else if(Difficulty === "Medium") {
+            if(score>BestScore){
+                localStorage.setItem("BestScoreMedium",score);
+            }
+        } else {
+            if(score>BestScore){
+                localStorage.setItem("BestScoreHard",score);
+            }
         }
         localStorage.setItem("Score",score);
     }else{
