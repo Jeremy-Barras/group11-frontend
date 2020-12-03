@@ -37,15 +37,22 @@ input:valid {
 }
 
 #headerSoundLogo {
-  width: 2.5%;
-}
+  width: 25%;
+} 
 
-#headerPicture {
-  text-align: center;
+#header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 80px;
 }
 
 #headerSound{
-  text-align: center;
+  justify-self: end;
+}
+
+#headerPicture {
+  justify-self: start;
 }
 
 #pageTitle {
