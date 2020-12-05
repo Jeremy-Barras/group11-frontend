@@ -30,7 +30,6 @@ divLogoSon.addEventListener("click", () => {
     console.log(imageSon)
 });
 
-
 const myPlayer = `<audio  id="audioPlayer" autoplay loop>
         <source 
             src="${music}"
@@ -51,10 +50,8 @@ function pauseAudio(){
     x.pause(); 
 }
 
-
-
 const HEADER_PICTURE = "<a href='/'><img id='headerLogo' src= " + logo +"  ></a>";
-const HEADER_SOUND = "<img id='headerSoundLogo' src="+ soundOn +">"; 
+const HEADER_SOUND = "<img id='headerSoundLogo' src="+ soundOff +">"; 
 const PAGE_TITLE = "AIM-LAB";
 const FOOTER_SUPPORT_TEXT = "Support contact : jeremy.barras@student.vinci.be";
 const FOOTER_CREATE_BY_TEXT = "Create by : Group 11 of IPL Student";
