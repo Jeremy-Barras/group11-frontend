@@ -1,4 +1,6 @@
 import { RedirectUrl } from "./Router.js";
+import videoDemo from "../videos/Demo.mp4";
+
 let home = `<div id="explication"></div>
 <div id="video"></div>
 <div id="bestScore"></div>
@@ -23,8 +25,18 @@ let home = `<div id="explication"></div>
 const HomePage = () => {  
   let page = document.querySelector("#page");
   page.innerHTML = home;  
-  let gameForm = document.querySelector("form");
-  gameForm.addEventListener("submit", onGame);
+  
+
+  const myVideo = `<video width="375" height="280" controls loop>
+        <source src="${videoDemo}" type="video/mp4"/>
+        Votre navigateur ne supporte pas les fichiers video.
+     </video>`;   
+
+const video = document.querySelector("#video");
+video.innerHTML += myVideo;
+
+let gameForm = document.querySelector("form");
+gameForm.addEventListener("submit", onGame);
 };
 
 const onGame = (e) => {
