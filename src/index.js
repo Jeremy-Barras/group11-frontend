@@ -3,6 +3,9 @@ import {Router} from "./Components/Router.js";
 import logo from "./images/logojs.png"; 
 import soundOn from "./images/soundOn.png";
 import soundOff from "./images/soundOff.png";
+import music from "./musique/musique.mp3";
+
+
 
 /* use webpack style & css loader*/
 import "./stylesheets/style.css";
@@ -12,20 +15,44 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 
 let imageSon = true; 
-
 let divLogoSon = document.getElementById("headerSound"); 
 divLogoSon.addEventListener("click", () => {
     if(imageSon === true) {
         imageSon = false; 
         divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOff +">"; 
+        console.log(myPlayer);
+        playAudio(); 
     }else{
         imageSon = true; 
         divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOn +">"; 
+        pauseAudio(); 
     }
     console.log(imageSon)
 });
 
-     
+
+const myPlayer = `<audio  id="audioPlayer" autoplay loop>
+        <source 
+            src="${music}"
+            type="audio/mpeg"
+        />
+        Votre navigateur ne supporte pas les fichiers audio.
+     </audio>`;   
+
+const main = document.querySelector("main");
+main.innerHTML += myPlayer;
+
+var x = document.getElementById("audioPlayer"); 
+function playAudio(){
+    x.play(); 
+}
+
+function pauseAudio(){
+    x.pause(); 
+}
+
+
+
 const HEADER_PICTURE = "<a href='/'><img id='headerLogo' src= " + logo +"  ></a>";
 const HEADER_SOUND = "<img id='headerSoundLogo' src="+ soundOn +">"; 
 const PAGE_TITLE = "AIM-LAB";

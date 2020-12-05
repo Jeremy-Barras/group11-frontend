@@ -36,25 +36,30 @@
   <!-- Page content row. 
         flex-grow-1: Fill available space 
         mb-5 : to ensure that we see all of the content of the page row -->
-
-  <div class="container-fluid h-100 d-flex flex-column">
-    <!-- Header row : dark background, white text -->
-    <div class="row bg-dark py-2">
-      <div class="col">
-        <header id="header" class="text-white font-weight-bold">
-          <div id="headerPicture"></div>
-          <div id="headerSound"></div>
-        </header>
+   
+      <div class="container-fluid h-100 d-flex flex-column">
+      <!-- Header row : dark background, white text -->
+      <div class="row bg-dark py-2">
+        <div class="col">
+          
+          <header id="header" class="text-white font-weight-bold">
+            <div id="headerPicture"></div>
+            <div id="headerSound"></div>
+            <main></main>
+          </header>
+        
+  
+        </div>
       </div>
-    </div>
-
-    <div class="row flex-grow-1 mb-5">
-      <div class="d-none d-md-block col-md bg-dark"></div>
-      <div class="col col-md-10 mt-2">
-        <div id="page"></div>
+  
+      <div class="row flex-grow-1 mb-5">
+        <div class="d-none d-md-block col-md bg-dark"></div>
+        <div class="col col-md-10 mt-2">
+          <div id="page"></div>
+        </div>
+        <div class="d-none d-md-block col-md bg-dark"></div>
       </div>
-      <div class="d-none d-md-block col-md bg-dark"></div>
-    </div>
+
     <!-- Footer row -->
     <div class="row bg-dark fixed-bottom">
       <div class="col">
