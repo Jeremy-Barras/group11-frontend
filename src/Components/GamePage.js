@@ -1,3 +1,4 @@
+import { RedirectUrl } from "./Router.js";
 import anime from 'animejs';
 import cibleImage from "../images/Cible.png";
 // destructuring assignment
@@ -113,6 +114,7 @@ const GamePage = () => {
             }
         }
         localStorage.setItem("Score",score);
+        RedirectUrl("/");
     }else{
         timerGame = setTimeout(() => {  
         timer()
@@ -170,6 +172,7 @@ const GamePage = () => {
         clearTimeout(timerCible);
         cible.src ="";
         divTimer.innerHTML = "FIN";
+        RedirectUrl("/");
     });
 };
 
