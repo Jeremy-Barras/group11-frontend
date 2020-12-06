@@ -25,7 +25,8 @@ let home = `<div id="explication"></div>
 const HomePage = () => {  
   let page = document.querySelector("#page");
   page.innerHTML = home;  
-  
+  let bestScore = document.querySelector("#bestScore");
+  bestScore.innerHTML = "Best Score : " + localStorage.getItem("BestScoreEasy");
 
   const myVideo = `<video width="375" height="280" controls loop>
         <source src="${videoDemo}" type="video/mp4"/>
@@ -35,8 +36,21 @@ const HomePage = () => {
 const video = document.querySelector("#video");
 video.innerHTML += myVideo;
 
+let easyDifficulty = document.querySelector("#inlineRadio1");
+easyDifficulty.addEventListener("click", bestScoreDifficulty,false);
+easyDifficulty.myParam = "Easy";
+
+let mediumDifficulty = document.querySelector("#inlineRadio2");
+mediumDifficulty.addEventListener("click", bestScoreDifficulty,false);
+mediumDifficulty.myParam = "Medium";
+
+let hardDifficulty = document.querySelector("#inlineRadio3");
+hardDifficulty.addEventListener("click", bestScoreDifficulty,false);
+hardDifficulty.myParam = "Hard";
+
 let gameForm = document.querySelector("form");
 gameForm.addEventListener("submit", onGame);
+
 };
 
 const onGame = (e) => {
@@ -51,6 +65,29 @@ const onGame = (e) => {
   localStorage.setItem("Difficulty",Difficulty);
   RedirectUrl("/game");
 };
+
+const bestScoreDifficulty = (e) =>{
+  let bestScore = document.querySelector("#bestScore");
+  let score = 0;
+  if(e.target.myParam === "Easy"){
+    if(localStorage.getItem("BestScoreEasy") != null){
+      score = localStorage.getItem("BestScoreEasy");
+    }
+    bestScore.innerHTML = "Best Score : " + score;
+  }else if(e.target.myParam === "Medium"){
+    if(localStorage.getItem("BestScoreMedium") != null){
+      score = localStorage.getItem("BestScoreMedium");
+    }
+    bestScore.innerHTML = "Best Score : " + score;
+  }else{
+    if(localStorage.getItem("BestScoreHard") != null){
+      score = localStorage.getItem("BestScoreHard");
+    }
+    bestScore.innerHTML = "Best Score : " + score;
+  }
+  
+ 
+}
 
 
 export default HomePage;
