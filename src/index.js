@@ -19,18 +19,18 @@ let divLogoSon = document.getElementById("headerSound");
 divLogoSon.addEventListener("click", () => {
     if(imageSon === true) {
         imageSon = false; 
-        divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOff +">"; 
+        divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOn +">"; 
         console.log(myPlayer);
         playAudio(); 
     }else{
         imageSon = true; 
-        divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOn +">"; 
+        divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOff +">"; 
         pauseAudio(); 
     }
     console.log(imageSon)
 });
 
-const myPlayer = `<audio  id="audioPlayer" autoplay loop>
+const myPlayer = `<audio  id="audioPlayer" loop>
         <source 
             src="${music}"
             type="audio/mpeg"
