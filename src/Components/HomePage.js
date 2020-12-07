@@ -1,9 +1,7 @@
 import { getUserSessionData } from "../utils/session.js";
 import { RedirectUrl } from "./Router.js";
-import videoDemo from "../videos/Demo.mp4";
 
-let home = `<div id="explication"></div>
-<div id="video"></div>
+let home = `
 <div id="bestScore"></div>
 <form action="/game">
 <div class="form-group">
@@ -29,33 +27,25 @@ const HomePage = () => {
   let bestScore = document.querySelector("#bestScore");
   bestScore.innerHTML = "Best Score : " + localStorage.getItem("BestScoreEasy");
 
-  const myVideo = `<video width="375" height="280" controls loop>
-        <source src="${videoDemo}" type="video/mp4"/>
-        Votre navigateur ne supporte pas les fichiers video.
-     </video>`;   
+  let easyDifficulty = document.querySelector("#inlineRadio1");
+  easyDifficulty.addEventListener("click", bestScoreDifficulty,false);
+  easyDifficulty.myParam = "Easy";
 
-const video = document.querySelector("#video");
-video.innerHTML += myVideo;
+  let mediumDifficulty = document.querySelector("#inlineRadio2");
+  mediumDifficulty.addEventListener("click", bestScoreDifficulty,false);
+  mediumDifficulty.myParam = "Medium";
 
-let easyDifficulty = document.querySelector("#inlineRadio1");
-easyDifficulty.addEventListener("click", bestScoreDifficulty,false);
-easyDifficulty.myParam = "Easy";
+  let hardDifficulty = document.querySelector("#inlineRadio3");
+  hardDifficulty.addEventListener("click", bestScoreDifficulty,false);
+  hardDifficulty.myParam = "Hard";
 
-let mediumDifficulty = document.querySelector("#inlineRadio2");
-mediumDifficulty.addEventListener("click", bestScoreDifficulty,false);
-mediumDifficulty.myParam = "Medium";
+  let gameForm = document.querySelector("form");
+  gameForm.addEventListener("submit", onGame);
 
-let hardDifficulty = document.querySelector("#inlineRadio3");
-hardDifficulty.addEventListener("click", bestScoreDifficulty,false);
-hardDifficulty.myParam = "Hard";
-
-let gameForm = document.querySelector("form");
-gameForm.addEventListener("submit", onGame);
-
-const user = getUserSessionData();
-if (!user) {
-  RedirectUrl("/");
-}
+  const user = getUserSessionData();
+  if (!user) {
+    RedirectUrl("/");
+  }
 
 };
 

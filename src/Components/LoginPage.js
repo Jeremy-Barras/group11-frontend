@@ -4,6 +4,7 @@ By default, all escape sequences in a template literal are ignored.*/
 import { getUserSessionData, setUserSessionData } from "../utils/session.js";
 import { RedirectUrl } from "./Router.js";
 import { API_URL } from "../utils/server.js";
+import videoDemo from "../videos/Demo.mp4";
 
 let loginPage = `<form>
 <div class="form-group">
@@ -17,7 +18,8 @@ let loginPage = `<form>
 <button class="btn btn-primary" id="btn" type="submit">Submit</button>
 <!-- Create an alert component with bootstrap that is not displayed by default-->
 <div class="alert alert-danger mt-2 d-none" id="messageBoard"></div>
-</form>`;
+</form>
+<div id="video"></div>`;
 
 const LoginPage = () => {
   let page = document.querySelector("#page");
@@ -27,6 +29,14 @@ const LoginPage = () => {
   if (user) {
     RedirectUrl("/home");
   } else loginForm.addEventListener("submit", onLogin);
+
+  const myVideo = `<video width="375" height="280" controls loop>
+        <source src="${videoDemo}" type="video/mp4"/>
+        Votre navigateur ne supporte pas les fichiers video.
+     </video>`;   
+
+  const video = document.querySelector("#video");
+  video.innerHTML += myVideo;
 };
 
 const onLogin = (e) => {
