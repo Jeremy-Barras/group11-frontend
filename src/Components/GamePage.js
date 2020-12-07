@@ -1,3 +1,4 @@
+import { getUserSessionData } from "../utils/session.js";
 import { RedirectUrl } from "./Router.js";
 import anime from 'animejs';
 import cibleImage from "../images/Cible.png";
@@ -174,6 +175,11 @@ const GamePage = () => {
         divTimer.innerHTML = "FIN";
         RedirectUrl("/");
     });
+
+    const user = getUserSessionData();
+    if (!user) {
+        RedirectUrl("/");
+    }
 };
 
 export default GamePage;

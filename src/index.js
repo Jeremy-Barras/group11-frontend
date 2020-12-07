@@ -50,7 +50,7 @@ function pauseAudio(){
     x.pause(); 
 }
 
-const HEADER_PICTURE = "<a href='/'><img id='headerLogo' src= " + logo +"  ></a>";
+const HEADER_PICTURE = "<a href='/home'><img id='headerLogo' src= " + logo +"  ></a>";
 const HEADER_SOUND = "<img id='headerSoundLogo' src="+ soundOff +">"; 
 const PAGE_TITLE = "AIM-LAB";
 const FOOTER_SUPPORT_TEXT = "Support contact : jeremy.barras@student.vinci.be";

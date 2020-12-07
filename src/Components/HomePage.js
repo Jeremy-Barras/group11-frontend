@@ -1,3 +1,4 @@
+import { getUserSessionData } from "../utils/session.js";
 import { RedirectUrl } from "./Router.js";
 import videoDemo from "../videos/Demo.mp4";
 
@@ -50,6 +51,11 @@ hardDifficulty.myParam = "Hard";
 
 let gameForm = document.querySelector("form");
 gameForm.addEventListener("submit", onGame);
+
+const user = getUserSessionData();
+if (!user) {
+  RedirectUrl("/");
+}
 
 };
 

@@ -1,12 +1,18 @@
 import HomePage from "./HomePage.js";
 import ErrorPage from "./ErrorPage.js";
 import GamePage from "./GamePage.js";
+import LoginPage from "./LoginPage.js";
+import RegisterPage from "./RegisterPage";
+import LogoutComponent from "./LogoutComponent";
 
 const routes = {
-  "/": HomePage,
+  "/": LoginPage,
+  "/home": HomePage,
   "/error": ErrorPage,
   "/game": GamePage,
-};
+  "/register": RegisterPage,
+  "/logout": LogoutComponent
+};  
 
 let page = document.querySelector("#page");
 let componentToRender;
