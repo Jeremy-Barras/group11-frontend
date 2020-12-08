@@ -52,7 +52,6 @@ const GamePage = () => {
     divScore.innerHTML = "Score : " + score;
     let play = false;
     
-    console.log("..Dificulty :" + Difficulty);
     let dureeAnim = 0;
     let dureeCible = 0;
     if(Difficulty == "Easy"){
@@ -176,12 +175,10 @@ const GamePage = () => {
     });
 
     buttonReplay.addEventListener("click", () =>{
-        console.log("..REPLAY")
         document.location.reload();
     });
 
     buttonStop.addEventListener("click", () =>{
-        console.log("..STOP")
         clearTimeout(timerGame);
         clearTimeout(timerCible);
         cible.src ="";

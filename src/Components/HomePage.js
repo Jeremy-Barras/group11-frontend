@@ -80,23 +80,36 @@ const onUserList = (data, difficulty) => {
   }else{
     sz = 5;
   }
-  let bestScore;
+  if(difficulty=="Easy"){
+    data.sort(function compare(a, b) {
+      return b.bestScoreEasy - a.bestScoreEasy;
+    })
+  }else if(difficulty=="Medium"){
+    data.sort(function compare(a, b) {
+      return b.bestScoreMedium - a.bestScoreMedium;
+    })
+  }else{
+    data.sort(function compare(a, b) {
+      return b.bestScoreHard - a.bestScoreHard;
+    })
+  }
+  let bestScoreUser;
   for(let i = 0; i< sz; i++){
     if(difficulty=="Easy"){
-      bestScore = data[i].bestScoreEasy;
+      bestScoreUser = data[i].bestScoreEasy;
     }else if(difficulty=="Medium"){
-      bestScore = data[i].bestScoreMedium;
+      bestScoreUser = data[i].bestScoreMedium;
     }else{
-      bestScore = data[i].bestScoreHard;
+      bestScoreUser = data[i].bestScoreHard;
     }
     if(i === 0){
-      userListPage += '<tr id="first"><td>'+data[i].username+'</td><td>'+bestScore+'</td></tr>';
+      userListPage += '<tr id="first"><td>'+data[i].username+'</td><td>'+bestScoreUser+'</td></tr>';
     } else if(i === 1) {
-      userListPage += '<tr id="second"><td>'+data[i].username+'</td><td>'+bestScore+'</td></tr>';
+      userListPage += '<tr id="second"><td>'+data[i].username+'</td><td>'+bestScoreUser+'</td></tr>';
     } else if(i === 2) {
-      userListPage += '<tr id="third"><td>'+data[i].username+'</td><td>'+bestScore+'</td></tr>';
+      userListPage += '<tr id="third"><td>'+data[i].username+'</td><td>'+bestScoreUser+'</td></tr>';
     }else{
-      userListPage += '<tr><td>'+data[i].username+'</td><td>'+bestScore+'</td></tr>'
+      userListPage += '<tr><td>'+data[i].username+'</td><td>'+bestScoreUser+'</td></tr>'
     }
   }
   userListPage += "</table>";
