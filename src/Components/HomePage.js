@@ -21,11 +21,15 @@ let home = `
 <button type="submit" class="btn btn-primary">PLAY</button>
 </form>`;
 
-const HomePage = () => {  
+let user;
+
+const HomePage = () => {
+  
+  user = getUserSessionData();
   let page = document.querySelector("#page");
   page.innerHTML = home;  
   let bestScore = document.querySelector("#bestScore");
-  bestScore.innerHTML = "Best Score : " + localStorage.getItem("BestScoreEasy");
+  bestScore.innerHTML = "Best Score : " + user.bestScoreEasy;;
 
   let easyDifficulty = document.querySelector("#inlineRadio1");
   easyDifficulty.addEventListener("click", bestScoreDifficulty,false);
@@ -42,7 +46,6 @@ const HomePage = () => {
   let gameForm = document.querySelector("form");
   gameForm.addEventListener("submit", onGame);
 
-  const user = getUserSessionData();
   if (!user) {
     RedirectUrl("/");
   }
@@ -66,19 +69,13 @@ const bestScoreDifficulty = (e) =>{
   let bestScore = document.querySelector("#bestScore");
   let score = 0;
   if(e.target.myParam === "Easy"){
-    if(localStorage.getItem("BestScoreEasy") != null){
-      score = localStorage.getItem("BestScoreEasy");
-    }
+    score = user.bestScoreEasy;
     bestScore.innerHTML = "Best Score : " + score;
   }else if(e.target.myParam === "Medium"){
-    if(localStorage.getItem("BestScoreMedium") != null){
-      score = localStorage.getItem("BestScoreMedium");
-    }
+    score = user.bestScoreMedium;
     bestScore.innerHTML = "Best Score : " + score;
   }else{
-    if(localStorage.getItem("BestScoreHard") != null){
-      score = localStorage.getItem("BestScoreHard");
-    }
+    score = user.bestScoreHard;
     bestScore.innerHTML = "Best Score : " + score;
   }
   

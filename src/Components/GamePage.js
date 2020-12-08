@@ -1,4 +1,5 @@
-import { getUserSessionData } from "../utils/session.js";
+import { API_URL } from "../utils/server.js";
+import { getUserSessionData,setUserSessionData } from "../utils/session.js";
 import { RedirectUrl } from "./Router.js";
 import anime from 'animejs';
 import cibleImage from "../images/Cible.png";
@@ -18,6 +19,7 @@ import cibleImage from "../images/Cible.png";
   <div id="zoneGame"></div>`;
 
 const GamePage = () => {
+    const user = getUserSessionData();
     let Difficulty = localStorage.getItem("Difficulty");
     let Game = document.querySelector("#page");
     Game.innerHTML = game
@@ -35,17 +37,11 @@ const GamePage = () => {
     let score = 0;
     let BestScore = 0;
     if(Difficulty === "Easy"){
-        if(localStorage.getItem("BestScoreEasy") != null){
-            BestScore = localStorage.getItem("BestScoreEasy");
-        }
+        BestScore = user.bestScoreEasy;
     } else if(Difficulty === "Medium") {
-        if(localStorage.getItem("BestScoreMedium") != null){
-            BestScore = localStorage.getItem("BestScoreMedium");
-        }
+        BestScore = user.bestScoreMedium;
     } else {
-        if(localStorage.getItem("BestScoreHard") != null){
-            BestScore = localStorage.getItem("BestScoreHard");
-        }
+        BestScore = user.bestScoreHard;
     }
     divBestScore.innerHTML = "BestScore : " + BestScore;
     divScore.innerHTML = "Score : " + score;
@@ -101,18 +97,33 @@ const GamePage = () => {
         clearTimeout(timerCible);
         cible.src ="";
         divTimer.innerHTML = "FIN";
-        if(Difficulty === "Easy"){
-            if(score>BestScore){
-                localStorage.setItem("BestScoreEasy",score);
+        if(score>BestScore){
+            if(Difficulty === "Easy"){
+                user.bestScoreEasy = score;
+                setUserSessionData(user);
+            } else if(Difficulty === "Medium") {
+                user.bestScoreMedium = score;
+                setUserSessionData(user);
+            } else {
+                user.bestScoreHard = score;
+                setUserSessionData(user);
             }
-        } else if(Difficulty === "Medium") {
-            if(score>BestScore){
-                localStorage.setItem("BestScoreMedium",score);
-            }
-        } else {
-            if(score>BestScore){
-                localStorage.setItem("BestScoreHard",score);
-            }
+
+            fetch(API_URL + "users/" + score + "/" + Difficulty, {
+                method: "PUT",
+                body: JSON.stringify(user),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+                .then((response) => {
+                  if (!response.ok)
+                    throw new Error(
+                      "Error code : " + response.status + " : " + response.statusText
+                    );
+                  return response.json();
+                })
+                
         }
         localStorage.setItem("Score",score);
         RedirectUrl("/");
@@ -176,7 +187,6 @@ const GamePage = () => {
         RedirectUrl("/");
     });
 
-    const user = getUserSessionData();
     if (!user) {
         RedirectUrl("/");
     }
