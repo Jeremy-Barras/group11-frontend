@@ -67,83 +67,36 @@ const HomePage = () => {
         );
       return response.json();
     })
-    .then((data) => onUserListEasy(data))
+    .then((data) => onUserList(data,"Easy"))
 };
 
-const onUserListEasy = (data) => {
+const onUserList = (data, difficulty) => {
   let userListPage = `<h5>LeaderBoard</h5>
                       <table class="table table-sm">
                       <th>Username</th>
                       <th>Score</th>`;
-  let userList = document.querySelector("table");
   if(data.length<5){
     sz = data.length;
   }else{
     sz = 5;
   }
+  let bestScore;
   for(let i = 0; i< sz; i++){
-    if(i === 0){
-      userListPage += '<tr id="first"><td>'+data[i].username+'</td><td>'+data[i].bestScoreEasy+'</td></tr>';
-    } else if(i === 1) {
-      userListPage += '<tr id="second"><td>'+data[i].username+'</td><td>'+data[i].bestScoreEasy+'</td></tr>';
-    } else if(i === 2) {
-      userListPage += '<tr id="third"><td>'+data[i].username+'</td><td>'+data[i].bestScoreEasy+'</td></tr>';
+    if(difficulty=="Easy"){
+      bestScore = data[i].bestScoreEasy;
+    }else if(difficulty=="Medium"){
+      bestScore = data[i].bestScoreMedium;
     }else{
-      userListPage += '<tr><td>'+data[i].username+'</td><td>'+data[i].bestScoreEasy+'</td></tr>'
+      bestScore = data[i].bestScoreHard;
     }
-  }
-  userListPage += "</table>";
-  let leaderBoard = document.querySelector("#leaderBoard");
-  return (leaderBoard.innerHTML = userListPage);
-};
-
-const onUserListMedium = (data) => {
-  let userListPage = `<h5>LeaderBoard</h5>
-                      <table class="table table-sm">
-                      <th>Username</th>
-                      <th>Score</th>`;
-  let userList = document.querySelector("table");
-  if(data.length<5){
-    sz = data.length;
-  }else{
-    sz = 5;
-  }
-  for(let i = 0; i< sz; i++){
     if(i === 0){
-      userListPage += '<tr id="first"><td>'+data[i].username+'</td><td>'+data[i].bestScoreMedium+'</td></tr>';
+      userListPage += '<tr id="first"><td>'+data[i].username+'</td><td>'+bestScore+'</td></tr>';
     } else if(i === 1) {
-      userListPage += '<tr id="second"><td>'+data[i].username+'</td><td>'+data[i].bestScoreMedium+'</td></tr>';
+      userListPage += '<tr id="second"><td>'+data[i].username+'</td><td>'+bestScore+'</td></tr>';
     } else if(i === 2) {
-      userListPage += '<tr id="third"><td>'+data[i].username+'</td><td>'+data[i].bestScoreMedium+'</td></tr>';
+      userListPage += '<tr id="third"><td>'+data[i].username+'</td><td>'+bestScore+'</td></tr>';
     }else{
-      userListPage += '<tr><td>'+data[i].username+'</td><td>'+data[i].bestScoreMedium+'</td></tr>'
-    }
-  }
-  userListPage += "</table>";
-  let leaderBoard = document.querySelector("#leaderBoard");
-  return (leaderBoard.innerHTML = userListPage);
-};
-
-const onUserListHard = (data) => {
-  let userListPage = `<h5>LeaderBoard</h5>
-                      <table class="table table-sm">
-                      <th>Username</th>
-                      <th>Score</th>`;
-  let userList = document.querySelector("table");
-  if(data.length<5){
-    sz = data.length;
-  }else{
-    sz = 5;
-  }
-  for(let i = 0; i< sz; i++){
-    if(i === 0){
-      userListPage += '<tr id="first"><td>'+data[i].username+'</td><td>'+data[i].bestScoreHard+'</td></tr>';
-    } else if(i === 1) {
-      userListPage += '<tr id="second"><td>'+data[i].username+'</td><td>'+data[i].bestScoreHard+'</td></tr>';
-    } else if(i === 2) {
-      userListPage += '<tr id="third"><td>'+data[i].username+'</td><td>'+data[i].bestScoreHard+'</td></tr>';
-    }else{
-      userListPage += '<tr><td>'+data[i].username+'</td><td>'+data[i].bestScoreHard+'</td></tr>'
+      userListPage += '<tr><td>'+data[i].username+'</td><td>'+bestScore+'</td></tr>'
     }
   }
   userListPage += "</table>";
@@ -183,7 +136,7 @@ const bestScoreDifficulty = (e) =>{
           );
         return response.json();
       })
-      .then((data) => onUserListEasy(data))
+      .then((data) => onUserList(data,"Easy"))
   }else if(e.target.myParam === "Medium"){
     score = user.bestScoreMedium;
     bestScore.innerHTML = "Best Score : " + score;
@@ -200,7 +153,7 @@ const bestScoreDifficulty = (e) =>{
           );
         return response.json();
       })
-      .then((data) => onUserListMedium(data))
+      .then((data) => onUserList(data,"Medium"))
   }else{
     score = user.bestScoreHard;
     bestScore.innerHTML = "Best Score : " + score;
@@ -217,7 +170,7 @@ const bestScoreDifficulty = (e) =>{
           );
         return response.json();
       })
-      .then((data) => onUserListHard(data))
+      .then((data) => onUserList(data,"Hard"))
   }
   
  
