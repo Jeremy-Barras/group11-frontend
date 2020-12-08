@@ -31,8 +31,13 @@ const HomePage = () => {
   user = getUserSessionData();
   let page = document.querySelector("#page");
   page.innerHTML = home;  
+
+  if (!user) {
+    RedirectUrl("/");
+  }
+
   let bestScore = document.querySelector("#bestScore");
-  bestScore.innerHTML = "Best Score : " + user.bestScoreEasy;;
+  bestScore.innerHTML = "Best Score : " + user.bestScoreEasy;
 
   let easyDifficulty = document.querySelector("#inlineRadio1");
   easyDifficulty.addEventListener("click", bestScoreDifficulty,false);
@@ -48,10 +53,6 @@ const HomePage = () => {
 
   let gameForm = document.querySelector("form");
   gameForm.addEventListener("submit", onGame);
-
-  if (!user) {
-    RedirectUrl("/");
-  }
 
   fetch(API_URL + "users/", {
     method: "GET",

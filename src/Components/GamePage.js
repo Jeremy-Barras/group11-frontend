@@ -23,6 +23,11 @@ const GamePage = () => {
     let Difficulty = localStorage.getItem("Difficulty");
     let Game = document.querySelector("#page");
     Game.innerHTML = game
+
+    if (!user) {
+        RedirectUrl("/");
+    }
+
     let zoneGame = document.getElementById("zoneGame");
     let divScore = document.getElementById("score");
     let divBestScore = document.getElementById("BestScore");
@@ -183,10 +188,6 @@ const GamePage = () => {
         divTimer.innerHTML = "FIN";
         RedirectUrl("/home");
     });
-
-    if (!user) {
-        RedirectUrl("/");
-    }
 };
 
 export default GamePage;
