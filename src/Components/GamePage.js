@@ -126,7 +126,7 @@ const GamePage = () => {
                 
         }
         localStorage.setItem("Score",score);
-        RedirectUrl("/");
+        RedirectUrl("/home");
     }else{
         timerGame = setTimeout(() => {  
         timer()
@@ -145,11 +145,8 @@ const GamePage = () => {
     function afficherCible(){
     let zoneWidth = zoneGame.offsetWidth;
     let zoneHeight = zoneGame.offsetHeight;
-    console.log("..ZoneWidth"+zoneWidth);
-    console.log("..ZoneHeight"+zoneHeight);
     clearTimeout(timerCible);
     let random = Math.floor(Math.random() * 10);
-    console.log("..RANDOM"+random);
     if(random == 8 || random == 9){
         animation.play();
         play=true;
@@ -184,7 +181,7 @@ const GamePage = () => {
         clearTimeout(timerCible);
         cible.src ="";
         divTimer.innerHTML = "FIN";
-        RedirectUrl("/");
+        RedirectUrl("/home");
     });
 
     if (!user) {

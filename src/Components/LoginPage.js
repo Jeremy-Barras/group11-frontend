@@ -68,7 +68,6 @@ const onLogin = (e) => {
 };
 
 const onUserLogin = (userData) => {
-  console.log("onUserLogin:", userData);
   const user = { ...userData, isAutenticated: true };
   setUserSessionData(user);
   RedirectUrl("/home");

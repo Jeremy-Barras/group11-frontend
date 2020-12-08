@@ -74,3 +74,15 @@ input:valid {
 #BestScore{
   padding-right: 15px;
 }
+
+#first{
+  background-color:#FFD700;
+}
+
+#second{
+  background-color:#aaa9ad;
+}
+
+#third{
+  background-color:#cd7f32;
+}

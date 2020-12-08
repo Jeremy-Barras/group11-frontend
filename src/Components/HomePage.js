@@ -1,7 +1,9 @@
+import { API_URL } from "../utils/server.js";
 import { getUserSessionData } from "../utils/session.js";
 import { RedirectUrl } from "./Router.js";
 
 let home = `
+<div id="leaderBoard"></div>
 <div id="bestScore"></div>
 <form action="/game">
 <div class="form-group">
@@ -22,6 +24,7 @@ let home = `
 </form>`;
 
 let user;
+let sz;
 
 const HomePage = () => {
   
@@ -50,6 +53,101 @@ const HomePage = () => {
     RedirectUrl("/");
   }
 
+  fetch(API_URL + "users/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(
+          "Error code : " + response.status + " : " + response.statusText
+        );
+      return response.json();
+    })
+    .then((data) => onUserListEasy(data))
+};
+
+const onUserListEasy = (data) => {
+  let userListPage = `<h5>LeaderBoard</h5>
+                      <table class="table table-sm">
+                      <th>Username</th>
+                      <th>Score</th>`;
+  let userList = document.querySelector("table");
+  if(data.length<5){
+    sz = data.length;
+  }else{
+    sz = 5;
+  }
+  for(let i = 0; i< sz; i++){
+    if(i === 0){
+      userListPage += '<tr id="first"><td>'+data[i].username+'</td><td>'+data[i].bestScoreEasy+'</td></tr>';
+    } else if(i === 1) {
+      userListPage += '<tr id="second"><td>'+data[i].username+'</td><td>'+data[i].bestScoreEasy+'</td></tr>';
+    } else if(i === 2) {
+      userListPage += '<tr id="third"><td>'+data[i].username+'</td><td>'+data[i].bestScoreEasy+'</td></tr>';
+    }else{
+      userListPage += '<tr><td>'+data[i].username+'</td><td>'+data[i].bestScoreEasy+'</td></tr>'
+    }
+  }
+  userListPage += "</table>";
+  let leaderBoard = document.querySelector("#leaderBoard");
+  return (leaderBoard.innerHTML = userListPage);
+};
+
+const onUserListMedium = (data) => {
+  let userListPage = `<h5>LeaderBoard</h5>
+                      <table class="table table-sm">
+                      <th>Username</th>
+                      <th>Score</th>`;
+  let userList = document.querySelector("table");
+  if(data.length<5){
+    sz = data.length;
+  }else{
+    sz = 5;
+  }
+  for(let i = 0; i< sz; i++){
+    if(i === 0){
+      userListPage += '<tr id="first"><td>'+data[i].username+'</td><td>'+data[i].bestScoreMedium+'</td></tr>';
+    } else if(i === 1) {
+      userListPage += '<tr id="second"><td>'+data[i].username+'</td><td>'+data[i].bestScoreMedium+'</td></tr>';
+    } else if(i === 2) {
+      userListPage += '<tr id="third"><td>'+data[i].username+'</td><td>'+data[i].bestScoreMedium+'</td></tr>';
+    }else{
+      userListPage += '<tr><td>'+data[i].username+'</td><td>'+data[i].bestScoreMedium+'</td></tr>'
+    }
+  }
+  userListPage += "</table>";
+  let leaderBoard = document.querySelector("#leaderBoard");
+  return (leaderBoard.innerHTML = userListPage);
+};
+
+const onUserListHard = (data) => {
+  let userListPage = `<h5>LeaderBoard</h5>
+                      <table class="table table-sm">
+                      <th>Username</th>
+                      <th>Score</th>`;
+  let userList = document.querySelector("table");
+  if(data.length<5){
+    sz = data.length;
+  }else{
+    sz = 5;
+  }
+  for(let i = 0; i< sz; i++){
+    if(i === 0){
+      userListPage += '<tr id="first"><td>'+data[i].username+'</td><td>'+data[i].bestScoreHard+'</td></tr>';
+    } else if(i === 1) {
+      userListPage += '<tr id="second"><td>'+data[i].username+'</td><td>'+data[i].bestScoreHard+'</td></tr>';
+    } else if(i === 2) {
+      userListPage += '<tr id="third"><td>'+data[i].username+'</td><td>'+data[i].bestScoreHard+'</td></tr>';
+    }else{
+      userListPage += '<tr><td>'+data[i].username+'</td><td>'+data[i].bestScoreHard+'</td></tr>'
+    }
+  }
+  userListPage += "</table>";
+  let leaderBoard = document.querySelector("#leaderBoard");
+  return (leaderBoard.innerHTML = userListPage);
 };
 
 const onGame = (e) => {
@@ -71,12 +169,54 @@ const bestScoreDifficulty = (e) =>{
   if(e.target.myParam === "Easy"){
     score = user.bestScoreEasy;
     bestScore.innerHTML = "Best Score : " + score;
+    fetch(API_URL + "users/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok)
+          throw new Error(
+            "Error code : " + response.status + " : " + response.statusText
+          );
+        return response.json();
+      })
+      .then((data) => onUserListEasy(data))
   }else if(e.target.myParam === "Medium"){
     score = user.bestScoreMedium;
     bestScore.innerHTML = "Best Score : " + score;
+    fetch(API_URL + "users/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok)
+          throw new Error(
+            "Error code : " + response.status + " : " + response.statusText
+          );
+        return response.json();
+      })
+      .then((data) => onUserListMedium(data))
   }else{
     score = user.bestScoreHard;
     bestScore.innerHTML = "Best Score : " + score;
+    fetch(API_URL + "users/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok)
+          throw new Error(
+            "Error code : " + response.status + " : " + response.statusText
+          );
+        return response.json();
+      })
+      .then((data) => onUserListHard(data))
   }
   
  
