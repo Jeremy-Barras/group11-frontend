@@ -6,6 +6,8 @@ import { API_URL } from "../utils/server.js";
 escaped using the escape character \ if they are to be included in their template value. 
 By default, all escape sequences in a template literal are ignored.*/
 let registerPage = `<div class="formCase">
+<h3>Welcome</h3>
+<p>Please sign up for access to game.</p>
 <div id="formContent">
   <div id="formHeader">
   <form>

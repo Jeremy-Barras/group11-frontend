@@ -15,16 +15,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 
 let imageSon = true; 
-let divLogoSon = document.getElementById("headerSound"); 
+let divLogoSon = document.getElementById("footerSound"); 
 divLogoSon.addEventListener("click", () => {
     if(imageSon === true) {
         imageSon = false; 
-        divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOn +">"; 
+        divLogoSon.innerHTML = "<img id='footerSoundLogo' src="+ soundOn +">"; 
         console.log(myPlayer);
         playAudio(); 
     }else{
         imageSon = true; 
-        divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOff +">"; 
+        divLogoSon.innerHTML = "<img id='footerSoundLogo' src="+ soundOff +">"; 
         pauseAudio(); 
     }
     console.log(imageSon)
@@ -51,11 +51,11 @@ function pauseAudio(){
 }
 
 const HEADER_PICTURE = "<a href='/home'><img id='headerLogo' src= " + logo +"  ></a>";
-const HEADER_SOUND = "<img id='headerSoundLogo' src="+ soundOff +">"; 
+const FOOTER_SOUND = "<img id='footerSoundLogo' src="+ soundOff +">"; 
 const PAGE_TITLE = "AIM-LAB";
 const FOOTER_SUPPORT_TEXT = "Support contact : jeremy.barras@student.vinci.be";
 const FOOTER_CREATE_BY_TEXT = "Create by : Group 11 of IPL Student";
 
 Router();
 
-setLayout(HEADER_PICTURE, HEADER_SOUND, PAGE_TITLE, FOOTER_SUPPORT_TEXT, FOOTER_CREATE_BY_TEXT);
+setLayout(HEADER_PICTURE, FOOTER_SOUND, PAGE_TITLE, FOOTER_SUPPORT_TEXT, FOOTER_CREATE_BY_TEXT);

@@ -1,27 +1,49 @@
 import { API_URL } from "../utils/server.js";
 import { getUserSessionData } from "../utils/session.js";
 import { RedirectUrl } from "./Router.js";
+import profilTarget from "../images/profilTarget.png";
 
 let home = `
-<div id="leaderBoard"></div>
-<div id="bestScore"></div>
-<form action="/game">
-<div class="form-group">
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Easy" checked>
-    <label class="form-check-label" for="inlineRadio1">Easy</label>
+<div class="formCase">
+<div id="formContent">
+  <div id="formHeader">
+    <div id="leaderBoard"></div>
   </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Medium">
-    <label class="form-check-label" for="inlineRadio2">Medium</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Hard">
-    <label class="form-check-label" for="inlineRadio3">Hard</label>
+  <div id="formFooter">
+    <form action="/game">
+    <div class="form-group">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Easy" checked>
+        <label class="form-check-label" for="inlineRadio1">Easy</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Medium">
+        <label class="form-check-label" for="inlineRadio2">Medium</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Hard">
+        <label class="form-check-label" for="inlineRadio3">Hard</label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">PLAY</button>
+    </form>
   </div>
 </div>
-<button type="submit" class="btn btn-primary">PLAY</button>
-</form>`;
+</div>
+
+<div id="userInfo"></div>
+<div class="formCase">
+<div id="formContent">
+  <div id="formHeader">
+    <div id="profilImage"></div>
+    <p id="userAddress"></p>
+    <button class='btn btn-danger' id='logoutButton' type='button'>Logout</button>
+  </div>
+  <div id="formFooter">
+    <div id="bestScore"></div>
+  </div>
+</div>
+</div>`;
 
 let user;
 let sz;
@@ -30,7 +52,12 @@ const HomePage = () => {
   
   user = getUserSessionData();
   let page = document.querySelector("#page");
-  page.innerHTML = home;  
+  page.innerHTML = home;
+
+  let logout = document.getElementById("logoutButton");
+  logout.addEventListener("click", () => {
+    RedirectUrl("/logout"); 
+  });
 
   if (!user) {
     RedirectUrl("/");
@@ -53,6 +80,15 @@ const HomePage = () => {
 
   let gameForm = document.querySelector("form");
   gameForm.addEventListener("submit", onGame);
+
+  let userInfo = document.querySelector("#userInfo");
+  userInfo.innerHTML = "You are log in with :";
+  
+  let userAddress = document.querySelector("#userAddress");
+  userAddress.innerHTML = user.username;
+  
+  let profilImage = document.querySelector("#profilImage");
+  profilImage.innerHTML = "<img src='"+ profilTarget +"' width='100%', height='100%'>";
 
   fetch(API_URL + "users/", {
     method: "GET",

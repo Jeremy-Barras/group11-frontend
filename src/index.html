@@ -33,32 +33,29 @@
     h-100 for a full height element  
     d-flex to create a flexbox container and transform direct children elements into flex items 
     flex-column to set a vertical direction-->
+  
   <!-- Page content row. 
-        flex-grow-1: Fill available space 
-        mb-5 : to ensure that we see all of the content of the page row -->
-   
-      <div class="container-fluid h-100 d-flex flex-column">
-      <!-- Header row : dark background, white text -->
-      <div class="row bg-dark py-2">
-        <div class="col">
-          
-          <header id="header" class="text-white font-weight-bold">
-            <div id="headerPicture"></div>
-            <div id="headerSound"></div>
-            <main></main>
-          </header>
-        
+    flex-grow-1: Fill available space 
+    mb-5 : to ensure that we see all of the content of the page row -->
   
-        </div>
+    <div class="container-fluid h-100 d-flex flex-column">
+    <!-- Header row : dark background, white text -->
+    <div class="row bg-dark py-2">
+      <div class="col">
+        <header class="text-white">
+          <div id="headerPicture"></div>
+          <p>Welcome to AIM-LAB, the excellence game to help you train to aim quickly in goal to match with the greatest in shooting games.</p>
+        </header>
       </div>
-  
-      <div class="row flex-grow-1 mb-5">
-        <div class="d-none d-md-block col-md bg-dark"></div>
-        <div class="col col-md-10 mt-2">
-          <div id="page"></div>
-        </div>
-        <div class="d-none d-md-block col-md bg-dark"></div>
+    </div>
+
+    <div class="row flex-grow-1 mb-5">
+      <div class="d-none d-md-block col-md bg-dark"></div>
+      <div class="col col-md-10 mt-2">
+        <div id="page"></div>
       </div>
+      <div class="d-none d-md-block col-md bg-dark"></div>
+    </div>
 
     <!-- Footer row -->
     <div class="row bg-dark fixed-bottom">
@@ -68,8 +65,11 @@
           <h5 id="footerCreateByText"></h5>
         </footer>
       </div>
+      <div id="footerSound">
+        <main></main>
+      </div>
     </div>
-  </div>
+  
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

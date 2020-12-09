@@ -1,15 +1,15 @@
-
-
 /**
  * setLayout allows to display specific information in an HTML template
  * containing those paramters as id to text elements (h4, h5, title)
- * @param {headerTitle} headerTitle
+ * @param {headerPicture} headerPicture
+ * @param {footerSound} footerSound
  * @param {pageTitle} pageTitle
- * @param {footerText} footerText
+ * @param {footerSupportText} footerSupportText
+ * @param {footerCreateByText} footerCreateByText
  */
-function setLayout(headerPicture, headerSound, pageTitle, footerSupportText, footerCreateByText) {
+function setLayout(headerPicture, footerSound, pageTitle, footerSupportText, footerCreateByText) {
   document.querySelector("#headerPicture").innerHTML = headerPicture; 
-  document.querySelector("#headerSound").innerHTML = headerSound; 
+  document.querySelector("#footerSound").innerHTML = footerSound; 
 
   document.querySelector("title").innerText = pageTitle;
   

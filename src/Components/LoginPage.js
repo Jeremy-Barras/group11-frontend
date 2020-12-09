@@ -7,7 +7,8 @@ import { API_URL } from "../utils/server.js";
 import videoDemo from "../videos/Demo.mp4";
 
 let loginPage = `<div class="welcome">
-<p>Welcome to AIM-LAB, the excellence game to help you train to aim quickly in goal to match the greatest in shooting games.</p>
+<h3>Welcome</h3>
+<p>Please log in for access to game.</p>
 <div class="formCase">
 <div id="formContent">
   <div id="formHeader">
@@ -28,8 +29,21 @@ let loginPage = `<div class="welcome">
   <div id="formFooter"><a class="btn underlineHover" href="/register">Not register yet ? Sign up</a></div>
 </div>
 </div>
-<h2>Demo</h2>
-<div id="video"></div>
+<h2>What about ?</h2>
+<div class="row">
+<div class="col-md-6" id="demoVideo">
+  <div id="video"></div>
+</div>
+<div class="col-md-6" id="instructions">
+  <h5>Game instructions :</h5>
+  <li>Login or Register</li>
+  <li>Choose your level (Easy, Medium or Hard). The difference between levels are in the target speed change.</li>
+  <li>Click on Play button for start the game.</li>
+  <li>You have 60 secondes for make the best score. Each fixed target give 10 points and slided target 15 points.</li>
+  <li>Check your rank by level.</li>
+</div>
+</div>
+</div>
 </div>`;
 
 const LoginPage = () => {
@@ -41,7 +55,7 @@ const LoginPage = () => {
     RedirectUrl("/home");
   } else loginForm.addEventListener("submit", onLogin);
 
-  const myVideo = `<video width="375" height="280" controls loop>
+  const myVideo = `<video width="100%" height="100%" controls loop>
         <source src="${videoDemo}" type="video/mp4"/>
         Votre navigateur ne supporte pas les fichiers video.
      </video>`;   
