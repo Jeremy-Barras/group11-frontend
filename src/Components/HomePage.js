@@ -42,10 +42,7 @@ let home = `
   <div id="formFooter">
     <div id="bestScore"></div>
   </div>
-</div>
-<button type="submit" class="btn btn-primary">PLAY</button>
-<button class='btn btn-danger' id='logoutButton' type='button'>Logout</button>
-</form>`;
+</div>`;
 
 let user;
 let sz;
@@ -60,11 +57,6 @@ const HomePage = () => {
   logout.addEventListener("click", () => {
     RedirectUrl("/logout"); 
   });
-
-  let logout = document.getElementById("logoutButton");
-  logout.addEventListener("click", () => {
-    RedirectUrl("/logout"); 
-  }); 
 
   if (!user) {
     RedirectUrl("/");
