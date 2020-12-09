@@ -6,20 +6,31 @@ import { RedirectUrl } from "./Router.js";
 import { API_URL } from "../utils/server.js";
 import videoDemo from "../videos/Demo.mp4";
 
-let loginPage = `<form>
-<div class="form-group">
-  <label for="email">Email</label>
-  <input class="form-control" id="email" type="text" name="email" placeholder="Enter your email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\.-]?\\w+)*(\\.\\w{2,4})+\$" />
+let loginPage = `<div class="welcome">
+<p>Welcome to AIM-LAB, the excellence game to help you train to aim quickly in goal to match the greatest in shooting games.</p>
+<div class="formCase">
+<div id="formContent">
+  <div id="formHeader">
+  <form>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" id="email" type="text" name="email" placeholder="Enter your email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\.-]?\\w+)*(\\.\\w{2,4})+\$" />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" required="" pattern=".*[A-Z]+.*" />
+    </div>
+    <button class="btn btn-primary" id="btn" type="submit">Login</button>
+    <!-- Create an alert component with bootstrap that is not displayed by default-->
+    <div class="alert alert-danger mt-2 d-none" id="messageBoard"></div>
+  </form>
+  </div>
+  <div id="formFooter"><a class="btn underlineHover" href="/register">Not register yet ? Sign up</a></div>
 </div>
-<div class="form-group">
-  <label for="password">Password</label>
-  <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" required="" pattern=".*[A-Z]+.*" />
 </div>
-<button class="btn btn-primary" id="btn" type="submit">Submit</button>
-<!-- Create an alert component with bootstrap that is not displayed by default-->
-<div class="alert alert-danger mt-2 d-none" id="messageBoard"></div>
-</form>
-<div id="video"></div>`;
+<h2>Demo</h2>
+<div id="video"></div>
+</div>`;
 
 const LoginPage = () => {
   let page = document.querySelector("#page");
