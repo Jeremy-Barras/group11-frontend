@@ -1,5 +1,6 @@
 import { setLayout } from "./utils/render.js";
-import {Router} from "./Components/Router.js";
+import {Router, RedirectUrl} from "./Components/Router.js";
+import { getUserSessionData } from "./utils/session.js";
 import logo from "./images/logojs.png"; 
 import soundOn from "./images/soundOn.png";
 import soundOff from "./images/soundOff.png";
@@ -19,15 +20,13 @@ let divLogoSon = document.getElementById("footerSound");
 divLogoSon.addEventListener("click", () => {
     if(imageSon === true) {
         imageSon = false; 
-        divLogoSon.innerHTML = "<img id='footerSoundLogo' src="+ soundOn +">"; 
-        console.log(myPlayer);
+        divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOn +">";
         playAudio(); 
     }else{
         imageSon = true; 
         divLogoSon.innerHTML = "<img id='footerSoundLogo' src="+ soundOff +">"; 
         pauseAudio(); 
     }
-    console.log(imageSon)
 });
 
 const myPlayer = `<audio  id="audioPlayer" loop>
