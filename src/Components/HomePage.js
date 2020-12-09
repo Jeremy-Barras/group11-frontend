@@ -21,16 +21,22 @@ let home = `
   </div>
 </div>
 <button type="submit" class="btn btn-primary">PLAY</button>
+<button class='btn btn-danger' id='logoutButton' type='button'>Logout</button>
 </form>`;
 
 let user;
 let sz;
 
 const HomePage = () => {
-  
+
   user = getUserSessionData();
   let page = document.querySelector("#page");
   page.innerHTML = home;  
+
+  let logout = document.getElementById("logoutButton");
+  logout.addEventListener("click", () => {
+    RedirectUrl("/logout"); 
+  }); 
 
   if (!user) {
     RedirectUrl("/");
@@ -184,10 +190,7 @@ const bestScoreDifficulty = (e) =>{
         return response.json();
       })
       .then((data) => onUserList(data,"Hard"))
-  }
-  
- 
+  } 
 }
-
 
 export default HomePage;
