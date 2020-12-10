@@ -5,45 +5,81 @@ import { getUserSessionData, setUserSessionData } from "../utils/session.js";
 import { RedirectUrl } from "./Router.js";
 import { API_URL } from "../utils/server.js";
 import videoDemo from "../videos/Demo.mp4";
+import facebookLogo from "../images/facebook.png";
+import instagramLogo from "../images/instagram.png";
+import twitterLogo from "../images/twitter.png";
+import youtubeLogo from "../images/youtube.png";
 
-let loginPage = `<div class="welcome">
-<h3>Welcome</h3>
-<p>Please log in for access to game.</p>
-<div class="formCase">
-<div id="formContent">
-  <div id="formHeader">
-  <form>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input class="form-control" id="email" type="text" name="email" placeholder="Enter your email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\.-]?\\w+)*(\\.\\w{2,4})+\$" />
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" required="" pattern=".*[A-Z]+.*" />
-    </div>
-    <button class="btn btn-primary" id="btn" type="submit">Login</button>
-    <!-- Create an alert component with bootstrap that is not displayed by default-->
-    <div class="alert alert-danger mt-2 d-none" id="messageBoard"></div>
-  </form>
-  </div>
-  <div id="formFooter"><a class="btn underlineHover" href="/register">Not register yet ? Sign up</a></div>
-</div>
-</div>
-<h2>What about ?</h2>
+let loginPage = `<div class="loginPage">
+
 <div class="row">
-<div class="col-md-6" id="demoVideo">
-  <div id="video"></div>
+  <div class="formCase col-md-8">
+    <div id="formContent">
+      <div id="formHeader">
+        <div class="row">
+          <div class="col-md-12" id="instructions">
+            <h2>About the game</h2>  
+            <h5>Instructions :</h5>
+              <p>Please Log in or Sign up for access game. Then, you must choose your level (Easy, Medium or Hard). 
+              The difference between levels are in the target speed change. Click on Play's button for start the game.
+              You have 60 secondes for make the best score. Each fixed target give 10 points and slided target 15 points.
+              After that, you can check your rank by level.</p>
+            <h5>Demonstration video :</h5>
+          </div>
+          <div class="col-md-12" id="demoVideo">
+            <div id="video"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="formCase col-md-12">
+      <div id="formContent">
+        <div id="formHeader">
+          <form>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input class="form-control" id="email" type="text" name="email" placeholder="Enter your email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\.-]?\\w+)*(\\.\\w{2,4})+\$" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" required="" pattern=".*[A-Z]+.*" />
+            </div>
+            <button class="btn btn-primary" id="btn" type="submit">Login</button>
+            <!-- Create an alert component with bootstrap that is not displayed by default-->
+            <div class="alert alert-danger mt-2 d-none" id="messageBoard"></div>
+          </form>
+        </div>
+        <div id="formFooter">
+          <a class="btn underlineHover" href="/register">Not register yet ? Sign up</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="formCase col-md-12">
+      <div id="formContent">
+        <div id="formHeader">
+          <p>Follow us :</p>
+        </div>
+        <div id="formFooter">
+          <div class="row socialMedia">
+            <div class="col-md-3" id="facebook"></div>
+            <div class="col-md-3" id="instagram"></div>
+            <div class="col-md-3" id="twitter"></div>
+            <div class="col-md-3" id="youtube"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button class="btn btn-danger" id="supportButton" type="button"></button>
+    </div>
+  </div>
+
 </div>
-<div class="col-md-6" id="instructions">
-  <h5>Game instructions :</h5>
-  <li>Login or Register</li>
-  <li>Choose your level (Easy, Medium or Hard). The difference between levels are in the target speed change.</li>
-  <li>Click on Play button for start the game.</li>
-  <li>You have 60 secondes for make the best score. Each fixed target give 10 points and slided target 15 points.</li>
-  <li>Check your rank by level.</li>
-</div>
-</div>
-</div>
+
 </div>`;
 
 const LoginPage = () => {
@@ -55,13 +91,39 @@ const LoginPage = () => {
     RedirectUrl("/home");
   } else loginForm.addEventListener("submit", onLogin);
 
-  const myVideo = `<video width="100%" height="100%" controls loop>
+  const myVideo = `<video width="80%" controls loop>
         <source src="${videoDemo}" type="video/mp4"/>
         Votre navigateur ne supporte pas les fichiers video.
      </video>`;   
 
   const video = document.querySelector("#video");
-  video.innerHTML += myVideo;
+  video.innerHTML = myVideo;
+
+  const myFacebook = `<a href="#"><img src="${facebookLogo}" height="35px"></a>`;
+
+  const myInstagram = `<a href="#"><img src="${instagramLogo}" height="35px"></a>`;
+
+  const myTwitter = `<a href="#"><img src="${twitterLogo}" height="35px"></a>`;
+
+  const myYoutube = `<a href="#"><img src="${youtubeLogo}" height="35px"></a>`;
+
+  const supportBut = `<a href="mailto:jeremy.barras@student.vinci.be">Need help ? Contact support</a>`;
+
+  const facebook = document.querySelector("#facebook");
+  facebook.innerHTML = myFacebook;
+
+  const instagram = document.querySelector("#instagram");
+  instagram.innerHTML = myInstagram;
+
+  const twitter = document.querySelector("#twitter");
+  twitter.innerHTML = myTwitter;
+
+  const youtube = document.querySelector("#youtube");
+  youtube.innerHTML = myYoutube;
+
+  const supportButton = document.querySelector("#supportButton");
+  supportButton.innerHTML = supportBut;
+
 };
 
 const onLogin = (e) => {
@@ -109,3 +171,4 @@ const onError = (err) => {
 };
 
 export default LoginPage;
+

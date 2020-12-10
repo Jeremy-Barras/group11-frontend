@@ -5,27 +5,33 @@ import { API_URL } from "../utils/server.js";
 /* In a template literal, the ` (backtick), \ (backslash), and $ (dollar sign) characters should be 
 escaped using the escape character \ if they are to be included in their template value. 
 By default, all escape sequences in a template literal are ignored.*/
-let registerPage = `<div class="formCase">
-<h3>Welcome</h3>
-<p>Please sign up for access to game.</p>
-<div id="formContent">
-  <div id="formHeader">
-  <form>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" id="email" type="text" name="email" placeholder="Enter your email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+\$" />
+let registerPage = `<div class="registerPage">
+
+<div class="col-md-12">
+  <div class="formCase">
+    <div id="formContent">
+      <div id="formHeader">
+        <form>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input class="form-control" id="email" type="text" name="email" placeholder="Enter your email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+\$" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" required="" pattern=".*[A-Z]+.*" />
+        </div>
+        <button class="btn btn-primary" id="btn" type="submit">Sign up</button>
+        <!-- Create an alert component with bootstrap that is not displayed by default-->
+        <div class="alert alert-danger mt-2 d-none" id="messageBoard"></div><span id="errorMessage"></span>
+        </form>
+      </div>
+      <div id="formFooter">
+        <a class="btn underlineHover" href="/">Already register ? Log in</a>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" required="" pattern=".*[A-Z]+.*" />
-  </div>
-  <button class="btn btn-primary" id="btn" type="submit">Sign up</button>
-  <!-- Create an alert component with bootstrap that is not displayed by default-->
-  <div class="alert alert-danger mt-2 d-none" id="messageBoard"></div><span id="errorMessage"></span>
-  </form>
-  </div>
-  <div id="formFooter"><a class="btn underlineHover" href="/">Already register ? Log in</a></div>
 </div>
+
 </div>
 `;
 
@@ -80,3 +86,4 @@ const onError = (err) => {
 };
 
 export default RegisterPage;
+

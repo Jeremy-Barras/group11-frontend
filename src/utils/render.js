@@ -4,17 +4,18 @@
  * @param {headerPicture} headerPicture
  * @param {footerSound} footerSound
  * @param {pageTitle} pageTitle
- * @param {footerSupportText} footerSupportText
- * @param {footerCreateByText} footerCreateByText
+ * @param {footerText} footerText
+ * @param {cinematicVideo} cinematicVideo
  */
-function setLayout(headerPicture, footerSound, pageTitle, footerSupportText, footerCreateByText) {
+function setLayout(headerPicture, footerSound, pageTitle, footerText, cinematicVideo) {
   document.querySelector("#headerPicture").innerHTML = headerPicture; 
   document.querySelector("#footerSound").innerHTML = footerSound; 
 
   document.querySelector("title").innerText = pageTitle;
   
-  document.querySelector("#footerSupportText").innerText = footerSupportText;
-  document.querySelector("#footerCreateByText").innerText = footerCreateByText;
+  document.querySelector("#footerText").innerText = footerText;
+
+  document.querySelector("#cinematicVideo").innerHTML = cinematicVideo;
 }
 
 

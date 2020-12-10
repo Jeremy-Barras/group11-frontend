@@ -3,20 +3,28 @@ import { getUserSessionData,setUserSessionData } from "../utils/session.js";
 import { RedirectUrl } from "./Router.js";
 import anime from 'animejs';
 import cibleImage from "../images/Cible.png";
-// destructuring assignment
-  let game = `
-  <div id="GameFunction">
-    <div class="score">
-        <div id="BestScore"></div>
-        <div id="score"></div>
+
+let game = `
+
+<div class="gameInfo col-md-12">
+    <div id="GameFunction">
+        <div class="score">
+            <div id="BestScore"></div>
+            <div id="score"></div>
+        </div>
+        <div id="timer"></div>
+        <div class="button">
+            <button type="button" id="Replay" class="btn btn-primary">Replay</button>
+            <button type="button" id="Stop" class="btn btn-danger">Stop</button>
+        </div>
     </div>
-    <div id="timer"></div>
-    <div class="button">
-        <button type="button" id="Replay" class="btn btn-primary">Replay</button>
-        <button type="button" id="Stop" class="btn btn-danger">Stop</button>
-    </div>
-  </div>
-  <div id="zoneGame"></div>`;
+</div>
+
+<div class="gamePage">
+    
+    <div id="zoneGame"></div>
+
+</div>`;
 
 const GamePage = () => {
     const user = getUserSessionData();

@@ -1,10 +1,11 @@
 import { setLayout } from "./utils/render.js";
 import {Router, RedirectUrl} from "./Components/Router.js";
-import { getUserSessionData } from "./utils/session.js";
 import logo from "./images/logojs.png"; 
 import soundOn from "./images/soundOn.png";
 import soundOff from "./images/soundOff.png";
 import music from "./musique/musique.mp3";
+import background from "./images/cinematic.png";
+import cinematic from "./videos/cinematic.mp4";
 
 
 
@@ -52,9 +53,11 @@ function pauseAudio(){
 const HEADER_PICTURE = "<a href='/home'><img id='headerLogo' src= " + logo +"  ></a>";
 const FOOTER_SOUND = "<img id='footerSoundLogo' src="+ soundOff +">"; 
 const PAGE_TITLE = "AIM-LAB";
-const FOOTER_SUPPORT_TEXT = "Support contact : jeremy.barras@student.vinci.be";
-const FOOTER_CREATE_BY_TEXT = "Create by : Group 11 of IPL Student";
+const FOOTER_TEXT = "© All right reserved. Created by Group 13 students of IPL VINCI school.";
+const CINEMATIC_VIDEO = `<video playsinline autoplay muted loop poster="${background}" id="cinematic">
+<source src="${cinematic}" type="video/mp4">
+</video>`;
 
 Router();
 
-setLayout(HEADER_PICTURE, FOOTER_SOUND, PAGE_TITLE, FOOTER_SUPPORT_TEXT, FOOTER_CREATE_BY_TEXT);
+setLayout(HEADER_PICTURE, FOOTER_SOUND, PAGE_TITLE, FOOTER_TEXT, CINEMATIC_VIDEO);
