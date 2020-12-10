@@ -20,7 +20,7 @@ let divLogoSon = document.getElementById("footerSound");
 divLogoSon.addEventListener("click", () => {
     if(imageSon === true) {
         imageSon = false; 
-        divLogoSon.innerHTML = "<img id='headerSoundLogo' src="+ soundOn +">";
+        divLogoSon.innerHTML = "<img id='footerSoundLogo' src="+ soundOn +">";
         playAudio(); 
     }else{
         imageSon = true; 
