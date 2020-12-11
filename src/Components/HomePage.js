@@ -44,6 +44,7 @@ let home = `<div class="homePage">
             <button class='btn btn-danger' id='logoutButton' type='button'>Logout</button>
           </div>
           <div id="formFooter">
+            <div id="score"></div>
             <div id="bestScore"></div>
           </div>
         </div>
@@ -72,6 +73,13 @@ const HomePage = () => {
 
   if (!user) {
     RedirectUrl("/");
+  }
+
+  let Score = document.querySelector("#score");
+  if(localStorage.getItem("ScoreEasy") == null){
+    Score.innerHTML = "Your Score : 0";
+  }else{
+    Score.innerHTML = "Your Score : " + localStorage.getItem("ScoreEasy");
   }
 
   let bestScore = document.querySelector("#bestScore");
@@ -178,10 +186,16 @@ const onGame = (e) => {
 
 const bestScoreDifficulty = (e) =>{
   let bestScore = document.querySelector("#bestScore");
-  let score = 0;
+  let bestscore = 0;
+  let Score = document.querySelector("#score");
   if(e.target.myParam === "Easy"){
-    score = user.bestScoreEasy;
-    bestScore.innerHTML = "Best Score : " + score;
+    if(localStorage.getItem("ScoreEasy") == null){
+      Score.innerHTML = "Your Score : 0";
+    }else{
+      Score.innerHTML = "Your Score : " + localStorage.getItem("ScoreEasy");
+    }
+    bestscore = user.bestScoreEasy;
+    bestScore.innerHTML = "Best Score : " + bestscore;
     fetch(API_URL + "users/", {
       method: "GET",
       headers: {
@@ -197,8 +211,13 @@ const bestScoreDifficulty = (e) =>{
       })
       .then((data) => onUserList(data,"Easy"))
   }else if(e.target.myParam === "Medium"){
-    score = user.bestScoreMedium;
-    bestScore.innerHTML = "Best Score : " + score;
+    if(localStorage.getItem("ScoreMedium") == null){
+      Score.innerHTML = "Your Score : 0";
+    }else{
+      Score.innerHTML = "Your Score : " + localStorage.getItem("ScoreMedium");
+    }
+    bestscore = user.bestScoreMedium;
+    bestScore.innerHTML = "Best Score : " + bestscore;
     fetch(API_URL + "users/", {
       method: "GET",
       headers: {
@@ -214,8 +233,13 @@ const bestScoreDifficulty = (e) =>{
       })
       .then((data) => onUserList(data,"Medium"))
   }else{
-    score = user.bestScoreHard;
-    bestScore.innerHTML = "Best Score : " + score;
+    if(localStorage.getItem("ScoreHard") == null){
+      Score.innerHTML = "Your Score : 0";
+    }else{
+      Score.innerHTML = "Your Score : " + localStorage.getItem("ScoreHard");
+    }
+    bestscore = user.bestScoreHard;
+    bestScore.innerHTML = "Best Score : " + bestscore;
     fetch(API_URL + "users/", {
       method: "GET",
       headers: {

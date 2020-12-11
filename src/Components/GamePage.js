@@ -137,7 +137,13 @@ const GamePage = () => {
                 })
                 
         }
-        localStorage.setItem("Score",score);
+        if(Difficulty === "Easy"){
+            localStorage.setItem("ScoreEasy",score);
+        } else if(Difficulty === "Medium") {
+            localStorage.setItem("ScoreMedium",score);
+        } else {
+            localStorage.setItem("ScoreHard",score);
+        }
         RedirectUrl("/home");
     }else{
         timerGame = setTimeout(() => {  
