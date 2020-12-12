@@ -17,10 +17,11 @@ let loginPage = `<div class="loginPage">
           <div class="col-md-12" id="instructions">
             <h2>About the game</h2>  
             <h5>Instructions :</h5>
-              <p>Please Log in or Sign up for access game. Then, you must choose your level (Easy, Medium or Hard). 
-              The difference between levels are in the target speed change. Click on Play's button for start the game.
-              You have 60 secondes for make the best score. Each fixed target give 10 points and slided target 15 points.
-              After that, you can check your rank by level.</p>
+              <p>Please login or sign up to access the game. Then you have to choose your level (Easy, Medium or Difficult). 
+              The difference between the levels lies in the speed at which the targets are displayed. 
+              Click on the "Play" button to start the game. You have 60 seconds to make the best score. 
+              Each fixed target gives 10 points and each moving target 15 points. 
+              After that, you can check your rank for each level in relation to the other players.</p>
             <h5>Demonstration video :</h5>
           </div>
           <div class="col-md-12" id="demoVideo">
