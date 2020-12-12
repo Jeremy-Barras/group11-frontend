@@ -6,11 +6,13 @@ import soundOff from "./images/soundOff.png";
 import music from "./musique/musique.mp3";
 import background from "./images/cinematic.png";
 import cinematic from "./videos/cinematic.mp4";
+import cookies from "./Components/CookiesConsent.js"
 
 
 
 /* use webpack style & css loader*/
 import "./stylesheets/style.css";
+import "./stylesheets/cookies-consent.css";
 /* load bootstrap css (web pack asset management) */
 import 'bootstrap/dist/css/bootstrap.css';
 /* load bootstrap module (JS) */
@@ -54,10 +56,11 @@ const HEADER_PICTURE = "<a href='/home'><img id='headerLogo' src= " + logo +"  >
 const FOOTER_SOUND = "<img id='footerSoundLogo' src="+ soundOff +">"; 
 const PAGE_TITLE = "AIM-LAB";
 const FOOTER_TEXT = "© All right reserved. Created by Group 13 students of IPL VINCI School.";
+const COOKIES_CONSENT = "<script src="+ cookies +"></script>";
 const CINEMATIC_VIDEO = `<video playsinline autoplay muted loop poster="${background}" id="cinematic">
 <source src="${cinematic}" type="video/mp4">
 </video>`;
 
 Router();
 
-setLayout(HEADER_PICTURE, FOOTER_SOUND, PAGE_TITLE, FOOTER_TEXT, CINEMATIC_VIDEO);
+setLayout(HEADER_PICTURE, FOOTER_SOUND, PAGE_TITLE, FOOTER_TEXT, COOKIES_CONSENT, CINEMATIC_VIDEO);
