@@ -13,6 +13,10 @@ let registerPage = `<div class="registerPage">
       <div id="formHeader">
         <form>
         <div class="form-group">
+          <label for="pseudo">Pseudo</label>
+          <input class="form-control" id="pseudo" type="text" name="pseudo" placeholder="Enter your pseudo" required="" />
+        </div>
+        <div class="form-group">
           <label for="email">Email</label>
           <input class="form-control" id="email" type="text" name="email" placeholder="Enter your email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+\$" />
         </div>
@@ -45,6 +49,7 @@ const RegisterPage = () => {
 const onRegister = (e) => {
   e.preventDefault();
   let user = {
+    username: document.getElementById("pseudo").value,
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
   };
