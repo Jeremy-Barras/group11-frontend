@@ -82,7 +82,9 @@ const onUserRegistration = (userData) => {
 const onError = (err) => {
   let messageBoard = document.querySelector("#messageBoard");
   let errorMessage = "";
-  if (err.message.includes("409"))
+  if(err.message.includes("410")){
+    errorMessage = "your password is not strong.";
+  } else if (err.message.includes("409"))
     errorMessage = "This user is already registered.";
   else errorMessage = err.message;
   messageBoard.innerText = errorMessage;
