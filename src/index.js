@@ -57,7 +57,7 @@ CookiesConsent();
 const HEADER_PICTURE = "<a href='/home'><img id='headerLogo' src= " + logo +"  ></a>";
 const FOOTER_SOUND = "<img id='footerSoundLogo' src="+ soundOff +">"; 
 const PAGE_TITLE = "AIM-LAB";
-const FOOTER_TEXT = "© All right reserved. Created by Group 13 students of IPL VINCI School.";
+const FOOTER_TEXT = "© All right reserved. Created by Group 11 students of IPL VINCI School.";
 const CINEMATIC_VIDEO = `<video playsinline autoplay muted loop poster="${background}" id="cinematic">
 <source src="${cinematic}" type="video/mp4">
 </video>`;
