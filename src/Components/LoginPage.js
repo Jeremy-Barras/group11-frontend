@@ -50,7 +50,7 @@ let loginPage = `<div class="loginPage">
           </form>
         </div>
         <div id="formFooter">
-          <a class="btn underlineHover" href="/register">Not register yet ? Sign up</a>
+          <a class="btn underlineHover" href="/register">Not registered yet ? Sign up</a>
         </div>
       </div>
     </div>
