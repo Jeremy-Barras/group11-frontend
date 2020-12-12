@@ -101,7 +101,7 @@ const HomePage = () => {
   gameForm.addEventListener("submit", onGame);
 
   let userAddress = document.querySelector("#userAddress");
-  userAddress.innerHTML = user.username;
+  userAddress.innerHTML = user.email;
   
   let profilImage = document.querySelector("#profilImage");
   profilImage.innerHTML = "<img src='"+ profilTarget +"' width='100%', height='100%'>";
