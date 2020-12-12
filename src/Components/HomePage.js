@@ -2,10 +2,7 @@ import { API_URL } from "../utils/server.js";
 import { getUserSessionData } from "../utils/session.js";
 import { RedirectUrl } from "./Router.js";
 import profilTarget from "../images/profilTarget.png";
-import facebookLogo from "../images/facebook.png";
-import instagramLogo from "../images/instagram.png";
-import twitterLogo from "../images/twitter.png";
-import youtubeLogo from "../images/youtube.png";
+import MediaWidget from "./MediaWidget.js";
 
 let home = `<div class="homePage">
 <div class="row">
@@ -47,31 +44,14 @@ let home = `<div class="homePage">
             <button class='btn btn-danger' id='logoutButton' type='button'>Logout</button>
           </div>
           <div id="formFooter">
+            <div id="score"></div>
             <div id="bestScore"></div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="formCase col-md-12">
-      <div id="formContent">
-        <div id="formHeader">
-          <p>Follow us :</p>
-        </div>
-        <div id="formFooter">
-          <div class="row socialMedia">
-            <div class="col-md-3" id="facebook"></div>
-            <div class="col-md-3" id="instagram"></div>
-            <div class="col-md-3" id="twitter"></div>
-            <div class="col-md-3" id="youtube"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-12">
-      </br>
-      <button class="btn btn-danger" id="supportButton" type="button"></button>
-    </div>
+    <div id="mediaWidget"></div>
   </div>
 </div>
 
@@ -93,6 +73,13 @@ const HomePage = () => {
 
   if (!user) {
     RedirectUrl("/");
+  }
+
+  let Score = document.querySelector("#score");
+  if(localStorage.getItem("ScoreEasy") == null){
+    Score.innerHTML = "Your Score : 0";
+  }else{
+    Score.innerHTML = "Your Score : " + localStorage.getItem("ScoreEasy");
   }
 
   let bestScore = document.querySelector("#bestScore");
@@ -119,30 +106,7 @@ const HomePage = () => {
   let profilImage = document.querySelector("#profilImage");
   profilImage.innerHTML = "<img src='"+ profilTarget +"' width='100%', height='100%'>";
 
-  const myFacebook = `<a href="#"><img src="${facebookLogo}" height="35px"></a>`;
-
-  const myInstagram = `<a href="#"><img src="${instagramLogo}" height="35px"></a>`;
-
-  const myTwitter = `<a href="#"><img src="${twitterLogo}" height="35px"></a>`;
-
-  const myYoutube = `<a href="#"><img src="${youtubeLogo}" height="35px"></a>`;
-
-  const supportBut = `<a href="mailto:jeremy.barras@student.vinci.be">Need help ? Contact support</a>`;
-
-  const facebook = document.querySelector("#facebook");
-  facebook.innerHTML = myFacebook;
-
-  const instagram = document.querySelector("#instagram");
-  instagram.innerHTML = myInstagram;
-
-  const twitter = document.querySelector("#twitter");
-  twitter.innerHTML = myTwitter;
-
-  const youtube = document.querySelector("#youtube");
-  youtube.innerHTML = myYoutube;
-
-  const supportButton = document.querySelector("#supportButton");
-  supportButton.innerHTML = supportBut;
+  MediaWidget();
 
   fetch(API_URL + "users/", {
     method: "GET",
@@ -222,10 +186,16 @@ const onGame = (e) => {
 
 const bestScoreDifficulty = (e) =>{
   let bestScore = document.querySelector("#bestScore");
-  let score = 0;
+  let bestscore = 0;
+  let Score = document.querySelector("#score");
   if(e.target.myParam === "Easy"){
-    score = user.bestScoreEasy;
-    bestScore.innerHTML = "Best Score : " + score;
+    if(localStorage.getItem("ScoreEasy") == null){
+      Score.innerHTML = "Your Score : 0";
+    }else{
+      Score.innerHTML = "Your Score : " + localStorage.getItem("ScoreEasy");
+    }
+    bestscore = user.bestScoreEasy;
+    bestScore.innerHTML = "Best Score : " + bestscore;
     fetch(API_URL + "users/", {
       method: "GET",
       headers: {
@@ -241,8 +211,13 @@ const bestScoreDifficulty = (e) =>{
       })
       .then((data) => onUserList(data,"Easy"))
   }else if(e.target.myParam === "Medium"){
-    score = user.bestScoreMedium;
-    bestScore.innerHTML = "Best Score : " + score;
+    if(localStorage.getItem("ScoreMedium") == null){
+      Score.innerHTML = "Your Score : 0";
+    }else{
+      Score.innerHTML = "Your Score : " + localStorage.getItem("ScoreMedium");
+    }
+    bestscore = user.bestScoreMedium;
+    bestScore.innerHTML = "Best Score : " + bestscore;
     fetch(API_URL + "users/", {
       method: "GET",
       headers: {
@@ -258,8 +233,13 @@ const bestScoreDifficulty = (e) =>{
       })
       .then((data) => onUserList(data,"Medium"))
   }else{
-    score = user.bestScoreHard;
-    bestScore.innerHTML = "Best Score : " + score;
+    if(localStorage.getItem("ScoreHard") == null){
+      Score.innerHTML = "Your Score : 0";
+    }else{
+      Score.innerHTML = "Your Score : " + localStorage.getItem("ScoreHard");
+    }
+    bestscore = user.bestScoreHard;
+    bestScore.innerHTML = "Best Score : " + bestscore;
     fetch(API_URL + "users/", {
       method: "GET",
       headers: {

@@ -12,6 +12,9 @@ const setUserSessionData = (user) => {
 
 const removeSessionData = () => {
   localStorage.removeItem(STORE_NAME);
+  localStorage.removeItem("ScoreEasy");
+  localStorage.removeItem("ScoreMedium");
+  localStorage.removeItem("ScoreHard");
 };
 
 export { getUserSessionData, setUserSessionData, removeSessionData };
