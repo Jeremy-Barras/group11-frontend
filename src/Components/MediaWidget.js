@@ -35,7 +35,7 @@ const MediaWidget = () => {
 
   const myTwitter = `<a href="#"><img src="${twitterLogo}" height="35px"></a>`;
 
-  const myYoutube = `<a href="#"><img src="${youtubeLogo}" height="35px"></a>`;
+  const myYoutube = `<a href="https://youtu.be/RoFdlsCXdMo"><img src="${youtubeLogo}" height="35px"></a>`;
 
   const supportBut = `<a href="mailto:jeremy.barras@student.vinci.be">Need help ? Contact support</a>`;
 

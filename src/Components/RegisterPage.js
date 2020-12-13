@@ -13,8 +13,8 @@ let registerPage = `<div class="registerPage">
       <div id="formHeader">
         <form>
         <div class="form-group">
-          <label for="pseudo">Pseudo</label>
-          <input class="form-control" id="pseudo" type="text" name="pseudo" placeholder="Enter your pseudo" required="" />
+          <label for="pseudo">Nickname</label>
+          <input class="form-control" id="pseudo" type="text" name="pseudo" placeholder="Enter your nickname" required="" />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
@@ -30,7 +30,7 @@ let registerPage = `<div class="registerPage">
         </form>
       </div>
       <div id="formFooter">
-        <a class="btn underlineHover" href="/">Already register ? Log in</a>
+        <a class="btn underlineHover" href="/">Already registered ? Log in</a>
       </div>
     </div>
   </div>
