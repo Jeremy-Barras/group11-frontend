@@ -54,6 +54,11 @@ const onRegister = (e) => {
     password: document.getElementById("password").value,
   };
 
+  if(localStorage.getItem("GlowCookies")!=1){
+    console.log(localStorage.getItem("GlowCookies"));
+    onError(411).end();
+  }
+
   fetch(API_URL + "users/", {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     body: JSON.stringify(user), // body data type must match "Content-Type" header
@@ -82,7 +87,9 @@ const onUserRegistration = (userData) => {
 const onError = (err) => {
   let messageBoard = document.querySelector("#messageBoard");
   let errorMessage = "";
-  if(err.message.includes("410")){
+  if(err === 411){
+    errorMessage = "Cookies no accepted.";
+  }else if(err.message.includes("410")){
     errorMessage = "your password is not strong.";
   } else if (err.message.includes("409"))
     errorMessage = "This user is already registered.";

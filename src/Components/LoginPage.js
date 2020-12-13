@@ -94,6 +94,11 @@ const onLogin = (e) => {
     password: document.getElementById("password").value,
   };
 
+  if(localStorage.getItem("GlowCookies")!=1){
+    console.log(localStorage.getItem("GlowCookies"));
+    onError(411).end();
+  }
+
   fetch(API_URL + "users/login", {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     body: JSON.stringify(user), // body data type must match "Content-Type" header
@@ -121,8 +126,13 @@ const onUserLogin = (userData) => {
 const onError = (err) => {
   let messageBoard = document.querySelector("#messageBoard");
   let errorMessage = "";
-  if (err.message.includes("401")) errorMessage = "Wrong username or password.";
-  else errorMessage = err.message;
+  if(err===411){
+    errorMessage = "Cookies no accepted.";
+  }else if (err.message.includes("401")){
+    errorMessage = "Wrong username or password.";
+  } else{
+    errorMessage = err.message;
+  }
   messageBoard.innerText = errorMessage;
   // show the messageBoard div (add relevant Bootstrap class)
   messageBoard.classList.add("d-block");

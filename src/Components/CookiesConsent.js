@@ -1,3 +1,4 @@
+import { RedirectUrl } from "./Router.js";
 /***
 *    Title: glowCookies
 *    Author: manuel@glowmedia.es
@@ -208,6 +209,8 @@ let rechazarCookies = () => {
     localStorage.setItem("GlowCookies", "0");
     abrirManageCookies();
     desactivarSeguimiento();
+    RedirectUrl("/logout");
+
 }
     
 // === OPEN AND CLOSE BANNER & BUTTON ===
